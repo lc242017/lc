@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: hive-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+
+  hive-metastore:
+    image: apache/hive:4.0.0
+    container_name: hive-metastore
+    depends_on:
+      - mysql
+    environment:
+      SERVICE_NAME: metastore
+    ports:
+      - "9083:9083"
+
+  hive-server:
+    image: apache/hive:4.0.0
+    container_name: hive-server
+    depends_on:
+      - hive-metastore
+    environment:
+      SERVICE_NAME: hiveserver2
+    ports:
+      - "10000:10000"
+      - "10002:10002"
+    volumes:
+      - ./模拟数据:/data
