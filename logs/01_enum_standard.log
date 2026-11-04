@@ -1,0 +1,288 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+col_name	col_value	cnt
+ods_order.channel	门店	3862
+ods_order.channel	APP	3854
+ods_order.channel	小程序	3845
+ods_order.channel	PC官网	3729
+ods_order.channel	app	170
+ods_order.channel	pc	140
+ods_order.order_status	已完成	5498
+ods_order.order_status	已支付	4102
+ods_order.order_status	待支付	1990
+ods_order.order_status	已取消	1800
+ods_order.order_status	退款中	835
+ods_order.order_status	1	211
+ods_order.order_status	3	202
+ods_order.order_status	cancelled	198
+ods_order.order_status	已付款	197
+ods_order.order_status	2	193
+ods_order.order_status	完成	192
+ods_order.order_status	4	182
+ods_order.pay_type	支付宝	3944
+ods_order.pay_type	微信支付	3711
+ods_order.pay_type	货到付款	3693
+ods_order.pay_type	银行卡	3601
+ods_order.pay_type	wechat	227
+ods_order.pay_type	微信	218
+ods_order.pay_type	alipay	206
+ods_product.status	在售	510
+ods_product.status	下架	53
+ods_product.status	缺货	37
+ods_user.gender	女	212
+ods_user.gender	男	182
+ods_user.gender	male	110
+ods_user.gender	F	109
+ods_user.gender	female	108
+ods_user.gender	未知	108
+ods_user.gender	M	87
+ods_user.gender		84
+ods_user.member_level	金卡会员	251
+ods_user.member_level	钻石会员	232
+ods_user.member_level	普通会员	208
+ods_user.member_level	银卡会员	201
+ods_user.member_level	钻石	21
+ods_user.member_level	银卡	16
+ods_user.member_level		14
+ods_user.member_level	silver	13
+ods_user.member_level	金卡	12
+ods_user.member_level	normal	11
+ods_user.member_level	普通	11
+ods_user.member_level	gold	10
+ods_user_behavior.behavior_type	pv	32945
+ods_user_behavior.behavior_type	buy	11393
+ods_user_behavior.behavior_type	cart	7021
+ods_user_behavior.behavior_type	fav	4969
+ods_user_behavior.behavior_type	加购	646
+ods_user_behavior.behavior_type	Cart	619
+ods_user_behavior.behavior_type	收藏	616
+ods_user_behavior.behavior_type	浏览	611
+ods_user_behavior.behavior_type	PV	604
+ods_user_behavior.behavior_type	购买	576
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+field	val	cnt
+v_behavior_enum.type	浏览	34160
+v_behavior_enum.type	购买	11969
+v_behavior_enum.type	加购	8286
+v_behavior_enum.type	收藏	5585
+v_order_enum.channel	APP	4024
+v_order_enum.channel	PC官网	3869
+v_order_enum.channel	门店	3862
+v_order_enum.channel	小程序	3845
+v_order_enum.order_status	已完成	5892
+v_order_enum.order_status	已支付	4492
+v_order_enum.order_status	待支付	2201
+v_order_enum.order_status	已取消	2180
+v_order_enum.order_status	退款中	835
+v_order_enum.pay_type	微信支付	4156
+v_order_enum.pay_type	支付宝	4150
+v_order_enum.pay_type	货到付款	3693
+v_order_enum.pay_type	银行卡	3601
+v_product_enum.status	在售	510
+v_product_enum.status	下架	53
+v_product_enum.status	缺货	37
+v_user_enum.gender	女	429
+v_user_enum.gender	男	379
+v_user_enum.gender	未知	192
+v_user_enum.member_level	金卡会员	273
+v_user_enum.member_level	钻石会员	253
+v_user_enum.member_level	普通会员	244
+v_user_enum.member_level	银卡会员	230
+
+[WARN] Failed to create directory: /home/hive/.beeline
+No such file or directory

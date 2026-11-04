@@ -1,0 +1,149 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+tbl	expect_cnt	real_cnt
+ods.ods_order	15600	15600
+dwd.dwd_user	1000	1000
+dwd.dwd_order_tmp	15000	15000
+ods.ods_user	1000	1000
+
+
+
+
+dup_order_id_cnt
+0
+
+
+
+
+
+bad_timestamp_cnt
+0
+
+
+
+
+
+
+min_date	max_date	date_cnt	fallback_date_cnt
+2024-01-01	2024-12-31	366	0
+
+
+
+
+
+
+
+field	distinct_cnt
+channel	4
+gender	3
+order_status	5
+member_level	4
+pay_type	4
+
+No such file or directory

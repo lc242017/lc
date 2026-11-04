@@ -1,0 +1,11 @@
+# 原始 beeline 日志含大量 INFO 噪声，清洗后的 *.log.clean 是验收证据，一并入库
+# 如需排除原始日志，取消下一行注释
+# logs/*.log
+
+# 构建中间产物
+*.html.tmp
+shot*.png
+
+# 敏感信息
+.env
+*.key
