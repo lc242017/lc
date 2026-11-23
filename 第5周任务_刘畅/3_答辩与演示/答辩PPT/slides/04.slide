@@ -1,0 +1,47 @@
+<Slide style={{ width: 1280, height: 720, padding: '60px', background: '#FFFFFF' }}>
+  <Box style={{ width: '100%', height: '100%', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Box>
+      <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1A3358' }}>四层数仓逐层固化口径，GMV 两层完全一致</Text>
+      <Box style={{ width: '100%', height: 1, background: '#D3DBE5', marginTop: 16 }} />
+    </Box>
+    <Box style={{ flexDirection: 'row', gap: 32, marginTop: 20, marginBottom: 20, flex: 1 }}>
+      {/* 左侧分层结构 */}
+      <Box style={{ width: 560, flexDirection: 'column', gap: 10, justifyContent: 'center' }}>
+        {[
+          { n: 'ODS', t: '贴源层', d: '6 张表原样落地，可追溯', c: '#82A1C4' },
+          { n: 'DWD', t: '明细层', d: '五类脏数据清洗，一单一品', c: '#4A73A8' },
+          { n: 'DWS', t: '汇总层', d: '天/周/月 × 门店/品类/渠道', c: '#315C91' },
+          { n: 'ADS', t: '应用层', d: '6 张指标表直供应用', c: '#234B80' },
+        ].map((item, idx) => (
+          <Box key={idx} style={{ flexDirection: 'row', alignItems: 'center', gap: 16, background: '#F4F7FB', borderRadius: 8, padding: 14, borderLeft: `6px solid ${item.c}` }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: item.c, width: 66 }}>{item.n}</Text>
+            <Box>
+              <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#26282E' }}>{item.t}</Text>
+              <Text style={{ fontSize: 15, color: '#5F6670' }}>{item.d}</Text>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+      {/* 右侧三个硬门槛 */}
+      <Box style={{ flex: 1, flexDirection: 'column', gap: 14, justifyContent: 'center' }}>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#1A3358', marginBottom: 4 }}>三个硬门槛 · 全部通过</Text>
+        <Box style={{ background: '#EAF0F8', borderRadius: 10, padding: 18 }}>
+          <Text style={{ fontSize: 42, fontWeight: 'bold', color: '#234B80' }}>15,000</Text>
+          <Text style={{ fontSize: 16, color: '#5F6670', marginTop: 4 }}>DWD 订单行数（15600 去重 600）</Text>
+        </Box>
+        <Box style={{ background: '#EAF0F8', borderRadius: 10, padding: 18 }}>
+          <Text style={{ fontSize: 42, fontWeight: 'bold', color: '#234B80' }}>11 / 12</Text>
+          <Text style={{ fontSize: 16, color: '#5F6670', marginTop: 4 }}>五类脏数据检查归零（email 保留 193 属预期）</Text>
+        </Box>
+        <Box style={{ background: '#EAF0F8', borderRadius: 10, padding: 18 }}>
+          <Text style={{ fontSize: 36, fontWeight: 'bold', color: '#234B80' }}>39,708,649.13</Text>
+          <Text style={{ fontSize: 16, color: '#5F6670', marginTop: 4 }}>GMV 元 · DWD 明细与 ADS 汇总相等</Text>
+        </Box>
+      </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Text style={{ fontSize: 14, color: '#8A97A8' }}>来源：第2周实跑日志 · 指标口径文档 v1.2</Text>
+      <Text style={{ fontSize: 14, color: '#8A97A8' }}>04</Text>
+    </Box>
+  </Box>
+</Slide>

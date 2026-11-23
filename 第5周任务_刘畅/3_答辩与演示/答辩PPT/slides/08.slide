@@ -1,0 +1,47 @@
+<Slide style={{ width: 1280, height: 720, padding: '60px', background: '#FFFFFF' }}>
+  <Box style={{ width: '100%', height: '100%', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Box>
+      <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1A3358' }}>NL2SQL 与可视化：从自然语言到决策大屏</Text>
+      <Box style={{ width: '100%', height: 1, background: '#D3DBE5', marginTop: 16 }} />
+    </Box>
+    <Box style={{ flexDirection: 'column', gap: 20, marginTop: 20, marginBottom: 20, flex: 1, justifyContent: 'center' }}>
+      {/* NL2SQL 流程箭头 */}
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A3358' }}>问数链路 · 7 类经营问题全部验证通过</Text>
+      <Box style={{ flexDirection: 'row', gap: 8 }}>
+        {['自然语言提问', '意图识别', 'Prompt+Schema', 'SQL 白名单', '只读执行', '结果返回'].map((s, idx) => (
+          <Box key={idx} style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+            <Box style={{ flex: 1, background: idx === 3 ? '#1A3358' : '#EAF0F8', borderRadius: 6, padding: 12, alignItems: 'center' }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold', color: idx === 3 ? '#FFFFFF' : '#234B80', textAlign: 'center' }}>{s}</Text>
+            </Box>
+            {idx < 5 && <Text style={{ fontSize: 18, color: '#82A1C4', marginLeft: 4 }}>›</Text>}
+          </Box>
+        ))}
+      </Box>
+      <Box style={{ flexDirection: 'row', gap: 12, flexWrap: 'wrap' }}>
+        {['总体GMV', '月度趋势', '品类排行', '区域销售', '支付占比', '门店Top', '订单概况'].map((t, idx) => (
+          <Box key={idx} style={{ background: '#F4F7FB', borderRadius: 16, padding: 8, paddingLeft: 16, paddingRight: 16, border: '1px solid #D3DBE5' }}>
+            <Text style={{ fontSize: 14, color: '#234B80' }}>{t}</Text>
+          </Box>
+        ))}
+      </Box>
+      {/* 可视化 */}
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A3358', marginTop: 8 }}>展示链路 · 数据导出驱动多端大屏</Text>
+      <Box style={{ flexDirection: 'row', gap: 14 }}>
+        {[
+          { t: 'ECharts 大屏', d: '7 类图表 + 6 KPI 卡\n1920×1080 自适应', c: '#234B80' },
+          { t: 'Superset 仪表板', d: '5 类图表 + 品类筛选器联动\n数据源 ydsh_ads', c: '#315C91' },
+          { t: 'Streamlit 问答', d: 'NL2SQL + 图表\n对话式闭环', c: '#4A73A8' },
+        ].map((item, idx) => (
+          <Box key={idx} style={{ flex: 1, background: '#F4F7FB', borderRadius: 8, padding: 16, borderTop: `4px solid ${item.c}` }}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#26282E', marginBottom: 8 }}>{item.t}</Text>
+            <Text style={{ fontSize: 15, color: '#5F6670', lineHeight: 1.5 }}>{item.d}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Text style={{ fontSize: 14, color: '#8A97A8' }}>来源：第3周 NL2SQL 接口 + 第4周执行报告；SQL 走白名单、只读账号</Text>
+      <Text style={{ fontSize: 14, color: '#8A97A8' }}>08</Text>
+    </Box>
+  </Box>
+</Slide>

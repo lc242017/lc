@@ -1,0 +1,28 @@
+<Slide style={{ width: 1280, height: 720, padding: '60px', background: '#FFFFFF' }}>
+  <Box style={{ width: '100%', height: '100%', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Box>
+      <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1A3358' }}>答辩内容</Text>
+      <Box style={{ width: '100%', height: 1, background: '#D3DBE5', marginTop: 16 }} />
+    </Box>
+    <Box style={{ flexDirection: 'column', gap: 8, marginTop: 24, marginBottom: 24 }}>
+      {[
+        { no: '01', title: '项目全景', desc: '业务痛点、四段式架构与五周递进成果' },
+        { no: '02', title: '技术与成果', desc: '四层数仓、口径统一、核心指标与预测建模' },
+        { no: '03', title: '可视化与部署', desc: 'NL2SQL 问数、ECharts 大屏与 Docker 一键部署' },
+        { no: '04', title: '治理与展望', desc: 'Git 历史审查、交付物核对与后续演进' },
+      ].map((item, idx) => (
+        <Box key={idx} style={{ flexDirection: 'row', alignItems: 'center', gap: 32, paddingTop: 18, paddingBottom: 18, borderBottom: '1px solid #E8ECF2' }}>
+          <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#234B80', width: 90 }}>{item.no}</Text>
+          <Box style={{ flex: 1 }}>
+            <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#26282E', marginBottom: 4 }}>{item.title}</Text>
+            <Text style={{ fontSize: 16, color: '#8A97A8' }}>{item.desc}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Text style={{ fontSize: 14, color: '#8A97A8' }}>云购生活新零售 · 企业级数据仓库与经营分析系统</Text>
+      <Text style={{ fontSize: 14, color: '#8A97A8' }}>02</Text>
+    </Box>
+  </Box>
+</Slide>

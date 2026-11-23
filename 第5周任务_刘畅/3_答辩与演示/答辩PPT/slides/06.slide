@@ -1,0 +1,66 @@
+<Slide style={{ width: 1280, height: 720, padding: '60px', background: '#FFFFFF' }}>
+  <Box style={{ width: '100%', height: '100%', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Box>
+      <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1A3358' }}>核心经营指标：全年 GMV 3,970.86 万元，15,000 单</Text>
+      <Box style={{ width: '100%', height: 1, background: '#D3DBE5', marginTop: 16 }} />
+    </Box>
+    {/* KPI 看板 */}
+    <Box style={{ flexDirection: 'row', gap: 16, marginTop: 18 }}>
+      {[
+        { k: 'GMV', v: '3,970.86万', c: '#234B80' },
+        { k: '订单量', v: '15,000', c: '#315C91' },
+        { k: '客单价', v: '2,647.24', c: '#4A73A8' },
+        { k: '活跃用户', v: '1,000', c: '#4A73A8' },
+      ].map((m, idx) => (
+        <Box key={idx} style={{ flex: 1, background: '#F4F7FB', borderRadius: 10, padding: 16, borderTop: `4px solid ${m.c}` }}>
+          <Text style={{ fontSize: 16, color: '#5F6670', marginBottom: 6 }}>{m.k}</Text>
+          <Text style={{ fontSize: 30, fontWeight: 'bold', color: m.c }}>{m.v}</Text>
+        </Box>
+      ))}
+    </Box>
+    {/* 图表区 */}
+    <Box style={{ flexDirection: 'row', gap: 24, marginTop: 16, marginBottom: 12, flex: 1, minHeight: 300 }}>
+      <Box style={{ flex: 3, background: '#FFFFFF', border: '1px solid #E8ECF2', borderRadius: 10, padding: 12 }}>
+        <Chart
+          style={{ width: '100%', height: 300 }}
+          chartType='lineChart'
+          title='2024 月度 GMV 趋势（万元）'
+          titleColor='#1A3358'
+          showLegend={false}
+          showDataLabels={false}
+          axisColor='#8A97A8'
+          colors={['#234B80']}
+          background='#FFFFFF'
+          data={[
+            ['月份', 'GMV'],
+            ['1月', 352.9], ['2月', 320.4], ['3月', 339.7], ['4月', 333.6],
+            ['5月', 332.1], ['6月', 308.9], ['7月', 321.9], ['8月', 339.2],
+            ['9月', 330.8], ['10月', 323.6], ['11月', 326.7], ['12月', 341.0],
+          ]}
+        />
+      </Box>
+      <Box style={{ flex: 2, background: '#FFFFFF', border: '1px solid #E8ECF2', borderRadius: 10, padding: 12 }}>
+        <Chart
+          style={{ width: '100%', height: 300 }}
+          chartType='pieChart'
+          title='支付方式 GMV 占比'
+          titleColor='#1A3358'
+          showLegend={true}
+          showDataLabels={true}
+          legendColor='#5F6670'
+          dataLabelColor='#FFFFFF'
+          colors={['#234B80', '#4A73A8', '#82A1C4', '#B8C9DD']}
+          background='#FFFFFF'
+          data={[
+            ['支付方式', '占比'],
+            ['微信支付', 26.8], ['支付宝', 26.6], ['货到付款', 23.4], ['银行卡', 23.3],
+          ]}
+        />
+      </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Text style={{ fontSize: 14, color: '#8A97A8' }}>口径：真实 Hive 表 ydsh_ads，有效订单 status=paid，金额单位元；来源第4周 echarts/data</Text>
+      <Text style={{ fontSize: 14, color: '#8A97A8' }}>06</Text>
+    </Box>
+  </Box>
+</Slide>

@@ -1,0 +1,31 @@
+<Slide style={{ width: 1280, height: 720, padding: 0, background: '#FFFFFF' }}>
+  <Box style={{ position: 'relative', width: 1280, height: 720, flexDirection: 'row' }}>
+    {/* 左侧深蓝主色块 */}
+    <Box style={{ width: 480, height: 720, background: 'linear-gradient(160deg, #1A3358 0%, #234B80 100%)', padding: 60, flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 18, color: '#82A1C4', letterSpacing: 2, marginBottom: 20 }}>THANK YOU</Text>
+      <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.25 }}>从原始数据</Text>
+      <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.25 }}>到经营决策</Text>
+      <Box style={{ width: 56, height: 4, background: '#82A1C4', marginTop: 28, marginBottom: 28 }} />
+      <Text style={{ fontSize: 19, color: '#C9D8EA', lineHeight: 1.7 }}>五周建成一套可运行、可复现、可展示的完整数据分析系统。</Text>
+    </Box>
+    {/* 右侧交付物核对 */}
+    <Box style={{ width: 800, height: 720, padding: 60, flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 28, fontWeight: 'bold', color: '#1A3358', marginBottom: 24 }}>第 5 周交付物 · 全部完成</Text>
+      {[
+        '端到端可运行系统',
+        '五大项目文档',
+        '英文 README',
+        '规范 Git 仓库',
+        '答辩 PPT + 演示演练',
+      ].map((t, idx) => (
+        <Box key={idx} style={{ flexDirection: 'row', alignItems: 'center', gap: 16, paddingTop: 14, paddingBottom: 14, borderBottom: '1px solid #E8ECF2' }}>
+          <Box style={{ width: 28, height: 28, borderRadius: 14, background: '#EAF0F8', alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#234B80' }}>✓</Text>
+          </Box>
+          <Text style={{ fontSize: 20, color: '#26282E' }}>{t}</Text>
+        </Box>
+      ))}
+      <Text style={{ fontSize: 15, color: '#8A97A8', marginTop: 28 }}>汇报人：刘畅　·　2026-11-23</Text>
+    </Box>
+  </Box>
+</Slide>
