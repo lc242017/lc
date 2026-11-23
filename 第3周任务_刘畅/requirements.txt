@@ -1,0 +1,15 @@
+pandas>=2.0
+numpy>=1.26
+scikit-learn>=1.4
+matplotlib>=3.8
+openai>=1.30
+# 生产环境读取 Hive（本地教学环境可不装，read_hive.py 会自动回退 SQLite）
+pyhive[hive]>=0.7
+thrift>=0.16
+sasl>=0.3.1
+# LangChain 链路（LCEL：ChatPromptTemplate | ChatOpenAI | StrOutputParser）
+# 未安装时 nl2sql/chain.py 走内置实现，Prompt/校验/执行完全一致
+# 实测版本：langchain-core 1.7.6 / langchain-openai 1.7.4
+langchain-core>=1.0
+langchain-openai>=1.0
+python-dotenv>=1.0

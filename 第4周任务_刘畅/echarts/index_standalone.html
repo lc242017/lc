@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>云购生活 · 经营分析数据大屏</title>
+<script src="echarts.min.js"></script>
+<script>if(typeof echarts==='undefined'){document.write('<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"><\/script>')}</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; overflow:hidden; background:#061324;
+    font-family:"Microsoft YaHei","PingFang SC",sans-serif; color:#cfe3ff; }
+  /* 1920x1080 设计稿，整体 scale 自适应（手册步骤3方案） */
+  #screen { width:1920px; height:1080px; position:absolute; left:0; top:0;
+    transform-origin:left top; background:
+      radial-gradient(ellipse at 50% -10%, #12386b 0%, #061324 60%); }
+  #screen::before { content:""; position:absolute; inset:0; pointer-events:none;
+    background-image:linear-gradient(rgba(80,160,255,.05) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(80,160,255,.05) 1px,transparent 1px);
+    background-size:40px 40px; }
+  .header { height:96px; display:flex; align-items:center; justify-content:center;
+    position:relative; border-bottom:2px solid rgba(64,158,255,.3); }
+  .header h1 { font-size:36px; letter-spacing:6px; color:#eaf4ff;
+    text-shadow:0 0 20px rgba(64,158,255,.8); font-weight:700; }
+  .header .sub { position:absolute; right:40px; font-size:16px; color:#7fa8d8; }
+  .header .clock { position:absolute; left:40px; font-size:16px; color:#7fa8d8; }
+  .kpis { display:flex; gap:20px; padding:20px 40px 8px; }
+  .kpi { flex:1; height:120px; border:1px solid rgba(64,158,255,.35);
+    border-radius:8px; background:linear-gradient(180deg,rgba(20,60,110,.6),rgba(8,25,48,.6));
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    box-shadow:inset 0 0 30px rgba(40,120,220,.15); }
+  .kpi .label { font-size:17px; color:#8fb6e6; margin-bottom:10px; }
+  .kpi .value { font-size:40px; font-weight:700; color:#4fd1ff;
+    text-shadow:0 0 16px rgba(79,209,255,.6); }
+  .kpi .value.small { font-size:32px; color:#ffd166; }
+  .grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; padding:12px 40px; }
+  .panel { border:1px solid rgba(64,158,255,.3); border-radius:8px; background:rgba(8,25,48,.55);
+    position:relative; }
+  .panel .title { position:absolute; top:12px; left:18px; font-size:18px; color:#bcd8ff;
+    z-index:2; letter-spacing:1px; }
+  .panel .title::before { content:""; display:inline-block; width:4px; height:16px;
+    background:#4fd1ff; margin-right:8px; vertical-align:-2px; }
+  .chart { width:100%; height:300px; }
+  .w2 { grid-column:span 2; }
+</style>
+<script>
+const DATA = {"category": [{"category": "运动户外", "orders": 4821, "qty": 22419, "netSales": 81960164.25}, {"category": "数码家电", "orders": 4497, "qty": 19918, "netSales": 77383940.57}, {"category": "服饰鞋包", "orders": 4174, "qty": 18730, "netSales": 71742823.6}, {"category": "食品生鲜", "orders": 4108, "qty": 18395, "netSales": 68277997.82}, {"category": "图书文娱", "orders": 4155, "qty": 17740, "netSales": 66108578.36}, {"category": "家居生活", "orders": 3791, "qty": 17303, "netSales": 63823904.63}, {"category": "美妆个护", "orders": 3792, "qty": 16208, "netSales": 59839872.73}, {"category": "母婴玩具", "orders": 3702, "qty": 15809, "netSales": 58560643.89}], "kpi": [{"gmv": 39708649.13, "orders": 15000, "aov": 2647.24, "users": 1000, "stores": 60, "refundRate": 5.45}], "paytype": [{"payType": "微信支付", "orders": 4001, "gmv": 10641135.73}, {"payType": "支付宝", "orders": 3973, "gmv": 10549779.28}, {"payType": "货到付款", "orders": 3551, "gmv": 9272952.5}, {"payType": "银行卡", "orders": 3475, "gmv": 9244781.62}], "region": [{"province": "浙江省", "orders": 1740, "gmv": 4720407.69}, {"province": "湖南省", "orders": 1540, "gmv": 3939843.14}, {"province": "四川省", "orders": 1491, "gmv": 3872745.43}, {"province": "辽宁省", "orders": 1224, "gmv": 3312154.1}, {"province": "陕西省", "orders": 1223, "gmv": 3241286.37}, {"province": "江苏省", "orders": 1027, "gmv": 2792420.33}, {"province": "河南省", "orders": 1007, "gmv": 2710637.2}, {"province": "福建省", "orders": 974, "gmv": 2684391.43}, {"province": "重庆市", "orders": 992, "gmv": 2622502.7}, {"province": "上海市", "orders": 1017, "gmv": 2598119.93}, {"province": "山东省", "orders": 768, "gmv": 1954664.48}, {"province": "湖北省", "orders": 725, "gmv": 1896850.9}, {"province": "北京市", "orders": 541, "gmv": 1355176.22}, {"province": "安徽省", "orders": 503, "gmv": 1355035.84}, {"province": "广东省", "orders": 228, "gmv": 652413.38}], "store_rank": [{"storeId": "S009", "storeName": "云购生活·莆田旗舰店", "province": "福建省", "orders": 278, "gmv": 792786.5}, {"storeId": "S014", "storeName": "云购生活·大连二店", "province": "辽宁省", "orders": 270, "gmv": 769656.42}, {"storeId": "S028", "storeName": "云购生活·合肥购物中心店", "province": "安徽省", "orders": 274, "gmv": 768355.83}, {"storeId": "S025", "storeName": "云购生活·苏州旗舰店", "province": "江苏省", "orders": 253, "gmv": 761787.72}, {"storeId": "S031", "storeName": "云购生活·嘉兴社区店", "province": "浙江省", "orders": 262, "gmv": 751251.47}, {"storeId": "S012", "storeName": "云购生活·绍兴旗舰店", "province": "浙江省", "orders": 267, "gmv": 749477.02}, {"storeId": "S053", "storeName": "云购生活·株洲一店", "province": "湖南省", "orders": 270, "gmv": 741464.86}, {"storeId": "S015", "storeName": "云购生活·南通社区店", "province": "江苏省", "orders": 275, "gmv": 741361.12}, {"storeId": "S060", "storeName": "云购生活·泸州社区店", "province": "四川省", "orders": 269, "gmv": 733118.24}, {"storeId": "S056", "storeName": "云购生活·开封社区店", "province": "河南省", "orders": 273, "gmv": 732061.81}], "trend": [{"month": "2024-01", "gmv": 3529060.52, "orders": 1278, "aov": 2761.39, "discount": 453579.57, "refund": 68}, {"month": "2024-02", "gmv": 3203690.08, "orders": 1203, "aov": 2663.08, "discount": 413497.89, "refund": 62}, {"month": "2024-03", "gmv": 3397486.98, "orders": 1288, "aov": 2637.8, "discount": 437244.24, "refund": 74}, {"month": "2024-04", "gmv": 3336398.19, "orders": 1219, "aov": 2737.0, "discount": 433400.91, "refund": 58}, {"month": "2024-05", "gmv": 3320614.89, "orders": 1301, "aov": 2552.36, "discount": 456403.03, "refund": 52}, {"month": "2024-06", "gmv": 3089283.59, "orders": 1154, "aov": 2677.02, "discount": 412566.26, "refund": 61}, {"month": "2024-07", "gmv": 3219103.51, "orders": 1244, "aov": 2587.7, "discount": 410938.95, "refund": 67}, {"month": "2024-08", "gmv": 3392166.5, "orders": 1274, "aov": 2662.61, "discount": 437809.47, "refund": 86}, {"month": "2024-09", "gmv": 3308150.71, "orders": 1228, "aov": 2693.93, "discount": 437232.73, "refund": 60}, {"month": "2024-10", "gmv": 3236101.8, "orders": 1289, "aov": 2510.55, "discount": 433702.66, "refund": 76}, {"month": "2024-11", "gmv": 3266936.19, "orders": 1231, "aov": 2653.89, "discount": 425968.72, "refund": 73}, {"month": "2024-12", "gmv": 3409656.19, "orders": 1291, "aov": 2641.1, "discount": 441488.29, "refund": 80}]};
+</script>
+</head>
+<body>
+<div id="screen">
+  <div class="header">
+    <div class="clock" id="clock"></div>
+    <h1>云购生活 · 新零售经营分析中心</h1>
+    <div class="sub">数据仓库与经营分析可视化系统 · 第4周</div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">总 GMV（元）</div><div class="value" id="kpi-gmv">--</div></div>
+    <div class="kpi"><div class="label">总订单数</div><div class="value" id="kpi-orders">--</div></div>
+    <div class="kpi"><div class="label">客单价 AOV（元）</div><div class="value small" id="kpi-aov">--</div></div>
+    <div class="kpi"><div class="label">下单用户数</div><div class="value small" id="kpi-users">--</div></div>
+    <div class="kpi"><div class="label">门店数</div><div class="value small" id="kpi-stores">--</div></div>
+    <div class="kpi"><div class="label">退款率（%）</div><div class="value small" id="kpi-refund">--</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="panel w2"><div class="title">月度 GMV 趋势（折线图）</div><div class="chart" id="c-trend"></div></div>
+    <div class="panel"><div class="title">支付方式占比（饼图）</div><div class="chart" id="c-pay"></div></div>
+
+    <div class="panel"><div class="title">品类销售排行（柱状图）</div><div class="chart" id="c-category"></div></div>
+    <div class="panel w2"><div class="title">门店销售 Top10（排行表）</div><div class="chart" id="c-store"></div></div>
+
+    <div class="panel"><div class="title">区域 GMV 分布（地图/散点）</div><div class="chart" id="c-region"></div></div>
+    <div class="panel"><div class="title">订单量 × GMV 相关性（散点图）</div><div class="chart" id="c-scatter"></div></div>
+    <div class="panel"><div class="title">月度指标热力图</div><div class="chart" id="c-heat"></div></div>
+  </div>
+</div>
+
+<script>
+// ===== 整体 scale 自适应（手册步骤3：保证不同分辨率布局不错位）=====
+function resize(){
+  const s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  const el = document.getElementById('screen');
+  el.style.transform = 'scale(' + s + ')';
+  el.style.left = (window.innerWidth - 1920*s)/2 + 'px';
+  el.style.top  = (window.innerHeight - 1080*s)/2 + 'px';
+}
+window.addEventListener('resize', resize); resize();
+
+// 时钟
+setInterval(()=>{ document.getElementById('clock').textContent = new Date().toLocaleString('zh-CN'); },1000);
+
+const charts = {};
+function init(id){ charts[id] = echarts.init(document.getElementById(id)); return charts[id]; }
+['c-trend','c-pay','c-category','c-store','c-region','c-scatter','c-heat'].forEach(init);
+
+const baseText = { color:'#8fb6e6', fontSize:13 };
+const axisLine = { lineStyle:{ color:'rgba(120,170,240,.4)' } };
+const splitLine = { lineStyle:{ color:'rgba(120,170,240,.12)' } };
+const tip = { backgroundColor:'rgba(6,25,48,.9)', borderColor:'#2a6fc0', textStyle:{color:'#dceaff'} };
+const fmtWan = v => (v/10000).toFixed(0)+'万';
+
+function load(name, cb){
+  if (typeof DATA !== 'undefined' && DATA[name]) { cb(DATA[name]); return; }
+  fetch('data/'+name+'.json').then(r=>r.json()).then(cb)
+    .catch(e=>console.error('load '+name+' failed:', e));
+}
+
+// KPI
+load('kpi', d=>{
+  const k=d[0];
+  document.getElementById('kpi-gmv').textContent   = fmtWan(k.gmv);
+  document.getElementById('kpi-orders').textContent= k.orders.toLocaleString();
+  document.getElementById('kpi-aov').textContent   = k.aov.toLocaleString();
+  document.getElementById('kpi-users').textContent = k.users.toLocaleString();
+  document.getElementById('kpi-stores').textContent= k.stores;
+  document.getElementById('kpi-refund').textContent= k.refundRate+'%';
+});
+
+// 折线图：GMV 趋势
+load('trend', d=>{
+  charts['c-trend'].setOption({
+    tooltip:{trigger:'axis', ...tip},
+    legend:{data:['GMV','订单数'], textStyle:baseText, top:34},
+    grid:{left:60,right:60,top:70,bottom:30},
+    xAxis:{type:'category', data:d.map(x=>x.month), axisLabel:baseText, axisLine},
+    yAxis:[{type:'value', name:'GMV(万元)', axisLabel:{...baseText,formatter:fmtWan}, splitLine},
+           {type:'value', name:'订单数', axisLabel:baseText, splitLine:{show:false}}],
+    series:[
+      {name:'GMV',type:'line',smooth:true,data:d.map(x=>x.gmv),
+       lineStyle:{color:'#4fd1ff',width:3}, itemStyle:{color:'#4fd1ff'},
+       areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,
+         [{offset:0,color:'rgba(79,209,255,.45)'},{offset:1,color:'rgba(79,209,255,0)'}])}},
+      {name:'订单数',type:'line',yAxisIndex:1,smooth:true,data:d.map(x=>x.orders),
+       lineStyle:{color:'#ffd166',width:2}, itemStyle:{color:'#ffd166'}}
+    ]
+  });
+});
+
+// 饼图：支付方式
+load('paytype', d=>{
+  charts['c-pay'].setOption({
+    tooltip:{trigger:'item', ...tip, formatter:'{b}: {c} 单 ({d}%)'},
+    legend:{orient:'vertical', right:10, top:'center', textStyle:baseText},
+    series:[{type:'pie', radius:['40%','68%'], center:['38%','55%'],
+      data:d.map(x=>({name:x.payType, value:x.orders})),
+      label:{color:'#cfe3ff'}, itemStyle:{borderColor:'#061324',borderWidth:2}}]
+  });
+});
+
+// 柱状图：品类
+load('category', d=>{
+  charts['c-category'].setOption({
+    tooltip:{trigger:'axis', ...tip, formatter:p=>p[0].name+'<br/>净销售额 '+fmtWan(p[0].value)},
+    grid:{left:80,right:20,top:50,bottom:30},
+    xAxis:{type:'value', axisLabel:{...baseText,formatter:fmtWan}, splitLine},
+    yAxis:{type:'category', data:d.map(x=>x.category).reverse(), axisLabel:baseText, axisLine},
+    series:[{type:'bar', data:d.map(x=>x.netSales).reverse(), barWidth:'55%',
+      itemStyle:{color:new echarts.graphic.LinearGradient(0,0,1,0,
+        [{offset:0,color:'#1a6fc0'},{offset:1,color:'#4fd1ff'}]), borderRadius:[0,4,4,0]}}]
+  });
+});
+
+// 排行表：门店 Top10
+load('store_rank', d=>{
+  charts['c-store'].setOption({
+    tooltip:{...tip},
+    grid:{left:120,right:70,top:50,bottom:30},
+    xAxis:{type:'value', axisLabel:{...baseText,formatter:fmtWan}, splitLine},
+    yAxis:{type:'category', data:d.map(x=>x.storeName).reverse(), axisLabel:{...baseText,fontSize:12}, axisLine},
+    series:[{type:'bar', data:d.map(x=>x.gmv).reverse(), barWidth:'60%',
+      label:{show:true,position:'right',color:'#ffd166',formatter:p=>fmtWan(p.value)},
+      itemStyle:{color:new echarts.graphic.LinearGradient(0,0,1,0,
+        [{offset:0,color:'#0e7a6b'},{offset:1,color:'#3fe0b0'}]), borderRadius:[0,4,4,0]}}]
+  });
+});
+
+// 区域：地图散点（省份 GMV 气泡，Y 轴按 GMV 排序的分段条）
+load('region', d=>{
+  charts['c-region'].setOption({
+    tooltip:{trigger:'axis', ...tip, formatter:p=>p[0].name+'<br/>GMV '+fmtWan(p[0].value)},
+    grid:{left:80,right:20,top:50,bottom:30},
+    xAxis:{type:'value', axisLabel:{...baseText,formatter:fmtWan}, splitLine},
+    yAxis:{type:'category', data:d.slice(0,10).map(x=>x.province).reverse(), axisLabel:baseText, axisLine},
+    series:[{type:'bar', data:d.slice(0,10).map(x=>x.gmv).reverse(), barWidth:'55%',
+      itemStyle:{color:new echarts.graphic.LinearGradient(0,0,1,0,
+        [{offset:0,color:'#7a3fc0'},{offset:1,color:'#b98cff'}]), borderRadius:[0,4,4,0]}}]
+  });
+});
+
+// 散点图：订单量 vs GMV
+load('trend', d=>{
+  charts['c-scatter'].setOption({
+    tooltip:{...tip, formatter:p=>p[2]+'<br/>订单 '+p[0]+'<br/>GMV '+fmtWan(p[1])},
+    grid:{left:60,right:30,top:50,bottom:40},
+    xAxis:{type:'value', name:'订单数', nameTextStyle:baseText, axisLabel:baseText, splitLine},
+    yAxis:{type:'value', name:'GMV', nameTextStyle:baseText, axisLabel:{...baseText,formatter:fmtWan}, splitLine},
+    series:[{type:'scatter', symbolSize:16,
+      data:d.map(x=>[x.orders, x.gmv, x.month]),
+      itemStyle:{color:'#4fd1ff', shadowBlur:10, shadowColor:'#4fd1ff'}}]
+  });
+});
+
+// 热力图：月份 × 指标(标准化)
+load('trend', d=>{
+  const metrics=['gmv','orders','aov','discount','refund'];
+  const labels=['GMV','订单','客单价','优惠','退款'];
+  const data=[];
+  metrics.forEach((m,yi)=>d.forEach((row,xi)=>{
+    const vals=d.map(r=>r[m]); const min=Math.min(...vals),max=Math.max(...vals);
+    const norm=max===min?50:Math.round((row[m]-min)/(max-min)*100);
+    data.push([xi,yi,norm]);
+  }));
+  charts['c-heat'].setOption({
+    tooltip:{...tip, formatter:p=>d[p.value[0]].month+' · '+labels[p.value[1]]+'<br/>强度 '+p.value[2]},
+    grid:{left:70,right:20,top:50,bottom:60},
+    xAxis:{type:'category', data:d.map(x=>x.month.slice(5)), axisLabel:{...baseText,fontSize:10}, splitArea:{show:true}},
+    yAxis:{type:'category', data:labels, axisLabel:baseText, splitArea:{show:true}},
+    visualMap:{min:0,max:100,calculable:true,orient:'horizontal',left:'center',bottom:5,
+      textStyle:baseText, inRange:{color:['#0d2340','#1a6fc0','#4fd1ff','#ffd166']}},
+    series:[{type:'heatmap', data, label:{show:false}}]
+  });
+});
+</script>
+</body>
+</html>

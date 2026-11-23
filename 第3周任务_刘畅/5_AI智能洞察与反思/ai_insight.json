@@ -1,0 +1,315 @@
+{
+  "mode": "offline-mock",
+  "model": "template-engine",
+  "prompt_chars": 2527,
+  "reply_chars": 3161,
+  "anomaly_high_days": 11,
+  "anomaly_drop_days": 21,
+  "figure_checks": {
+    "total": 60,
+    "pass": 60,
+    "warn": 0
+  },
+  "figure_check_detail": [
+    {
+      "figure": "29,401",
+      "evidence": "2026-05-19 GMV（29,401）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "47.9%",
+      "evidence": "2026-05-19 环比幅度（47.9）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "32,089",
+      "evidence": "2026-05-29 GMV（32,089）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "45.8%",
+      "evidence": "2026-05-29 环比幅度（45.8）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "34,958",
+      "evidence": "2026-06-09 GMV（34,958）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "44.7%",
+      "evidence": "2026-06-09 环比幅度（44.7）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "36,530",
+      "evidence": "2026-06-19 GMV（36,530）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "47.7%",
+      "evidence": "2026-06-19 环比幅度（47.7）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "92,911",
+      "evidence": "2026-06-28 GMV（92,911）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "104.9%",
+      "evidence": "2026-06-28 环比幅度（104.9）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "41,085",
+      "evidence": "2026-06-29 GMV（41,085）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "55.8%",
+      "evidence": "2026-06-29 环比幅度（55.8）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "38,815",
+      "evidence": "2026-07-09 GMV（38,815）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "45.4%",
+      "evidence": "2026-07-09 环比幅度（45.4）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "103,215",
+      "evidence": "2026-07-18 GMV（103,215）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "172.8%",
+      "evidence": "2026-07-18 环比幅度（172.8）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "50,353",
+      "evidence": "2026-07-19 GMV（50,353）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "51.2%",
+      "evidence": "2026-07-19 环比幅度（51.2）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "41,512",
+      "evidence": "2026-07-29 GMV（41,512）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "43.5%",
+      "evidence": "2026-07-29 环比幅度（43.5）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "100,267",
+      "evidence": "2026-08-08 GMV（100,267）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "137.6%",
+      "evidence": "2026-08-08 环比幅度（137.6）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "59,033",
+      "evidence": "2026-08-09 GMV（59,033）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "41.1%",
+      "evidence": "2026-08-09 环比幅度（41.1）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "36,339",
+      "evidence": "2026-08-10 GMV（36,339）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "38.4%",
+      "evidence": "2026-08-10 环比幅度（38.4）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "41,029",
+      "evidence": "2026-08-19 GMV（41,029）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "47.0%",
+      "evidence": "2026-08-19 环比幅度（47.0）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "40,865",
+      "evidence": "2026-08-24 GMV（40,865）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "30.0%",
+      "evidence": "2026-08-24 环比幅度（30.0）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "91,648",
+      "evidence": "2026-09-08 GMV（91,648）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "120.5%",
+      "evidence": "2026-09-08 环比幅度（120.5）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "46,132",
+      "evidence": "2026-09-09 GMV（46,132）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "49.7%",
+      "evidence": "2026-09-09 环比幅度（49.7）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "89,248",
+      "evidence": "2026-09-18 GMV（89,248）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "81.3%",
+      "evidence": "2026-09-18 环比幅度（81.3）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "52,442",
+      "evidence": "2026-09-19 GMV（52,442）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "41.2%",
+      "evidence": "2026-09-19 环比幅度（41.2）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "41,670",
+      "evidence": "2026-09-29 GMV（41,670）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "52.7%",
+      "evidence": "2026-09-29 环比幅度（52.7）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "123,645",
+      "evidence": "2026-10-01 GMV（123,645）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "177.0%",
+      "evidence": "2026-10-01 环比幅度（177.0）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "46,282",
+      "evidence": "2026-10-02 GMV（46,282）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "62.6%",
+      "evidence": "2026-10-02 环比幅度（62.6）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "95,572",
+      "evidence": "2026-10-08 GMV（95,572）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "88.0%",
+      "evidence": "2026-10-08 环比幅度（88.0）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "49,117",
+      "evidence": "2026-10-09 GMV（49,117）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "48.6%",
+      "evidence": "2026-10-09 环比幅度（48.6）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "124,486",
+      "evidence": "2026-10-18 GMV（124,486）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "89.9%",
+      "evidence": "2026-10-18 环比幅度（89.9）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "45,789",
+      "evidence": "2026-10-19 GMV（45,789）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "63.2%",
+      "evidence": "2026-10-19 环比幅度（63.2）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "94,102",
+      "evidence": "2026-10-28 GMV（94,102）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "101.5%",
+      "evidence": "2026-10-28 环比幅度（101.5）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "55,037",
+      "evidence": "2026-10-29 GMV（55,037）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "41.5%",
+      "evidence": "2026-10-29 环比幅度（41.5）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "171,199",
+      "evidence": "2026-11-01 GMV（171,199）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "168.3%",
+      "evidence": "2026-11-01 环比幅度（168.3）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "47,886",
+      "evidence": "2026-11-02 GMV（47,886）",
+      "verdict": "PASS"
+    },
+    {
+      "figure": "72.0%",
+      "evidence": "2026-11-02 环比幅度（72.0）",
+      "verdict": "PASS"
+    }
+  ]
+}

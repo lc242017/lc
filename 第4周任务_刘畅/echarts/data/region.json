@@ -1,0 +1,77 @@
+[
+  {
+    "province": "浙江省",
+    "orders": 1740,
+    "gmv": 4720407.69
+  },
+  {
+    "province": "湖南省",
+    "orders": 1540,
+    "gmv": 3939843.14
+  },
+  {
+    "province": "四川省",
+    "orders": 1491,
+    "gmv": 3872745.43
+  },
+  {
+    "province": "辽宁省",
+    "orders": 1224,
+    "gmv": 3312154.1
+  },
+  {
+    "province": "陕西省",
+    "orders": 1223,
+    "gmv": 3241286.37
+  },
+  {
+    "province": "江苏省",
+    "orders": 1027,
+    "gmv": 2792420.33
+  },
+  {
+    "province": "河南省",
+    "orders": 1007,
+    "gmv": 2710637.2
+  },
+  {
+    "province": "福建省",
+    "orders": 974,
+    "gmv": 2684391.43
+  },
+  {
+    "province": "重庆市",
+    "orders": 992,
+    "gmv": 2622502.7
+  },
+  {
+    "province": "上海市",
+    "orders": 1017,
+    "gmv": 2598119.93
+  },
+  {
+    "province": "山东省",
+    "orders": 768,
+    "gmv": 1954664.48
+  },
+  {
+    "province": "湖北省",
+    "orders": 725,
+    "gmv": 1896850.9
+  },
+  {
+    "province": "北京市",
+    "orders": 541,
+    "gmv": 1355176.22
+  },
+  {
+    "province": "安徽省",
+    "orders": 503,
+    "gmv": 1355035.84
+  },
+  {
+    "province": "广东省",
+    "orders": 228,
+    "gmv": 652413.38
+  }
+]

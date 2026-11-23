@@ -1,0 +1,72 @@
+[
+  {
+    "storeId": "S009",
+    "storeName": "云购生活·莆田旗舰店",
+    "province": "福建省",
+    "orders": 278,
+    "gmv": 792786.5
+  },
+  {
+    "storeId": "S014",
+    "storeName": "云购生活·大连二店",
+    "province": "辽宁省",
+    "orders": 270,
+    "gmv": 769656.42
+  },
+  {
+    "storeId": "S028",
+    "storeName": "云购生活·合肥购物中心店",
+    "province": "安徽省",
+    "orders": 274,
+    "gmv": 768355.83
+  },
+  {
+    "storeId": "S025",
+    "storeName": "云购生活·苏州旗舰店",
+    "province": "江苏省",
+    "orders": 253,
+    "gmv": 761787.72
+  },
+  {
+    "storeId": "S031",
+    "storeName": "云购生活·嘉兴社区店",
+    "province": "浙江省",
+    "orders": 262,
+    "gmv": 751251.47
+  },
+  {
+    "storeId": "S012",
+    "storeName": "云购生活·绍兴旗舰店",
+    "province": "浙江省",
+    "orders": 267,
+    "gmv": 749477.02
+  },
+  {
+    "storeId": "S053",
+    "storeName": "云购生活·株洲一店",
+    "province": "湖南省",
+    "orders": 270,
+    "gmv": 741464.86
+  },
+  {
+    "storeId": "S015",
+    "storeName": "云购生活·南通社区店",
+    "province": "江苏省",
+    "orders": 275,
+    "gmv": 741361.12
+  },
+  {
+    "storeId": "S060",
+    "storeName": "云购生活·泸州社区店",
+    "province": "四川省",
+    "orders": 269,
+    "gmv": 733118.24
+  },
+  {
+    "storeId": "S056",
+    "storeName": "云购生活·开封社区店",
+    "province": "河南省",
+    "orders": 273,
+    "gmv": 732061.81
+  }
+]

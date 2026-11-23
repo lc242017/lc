@@ -1,0 +1,55 @@
+# ============================================
+# 第4周：可视化 + 应用 一键部署编排（手册步骤5）
+# 设计说明：
+#   Hive/MySQL 数据服务已在宿主机 hive-demo 项目中运行（端口 10000/3307）。
+#   本编排只管理 Superset 与 Streamlit 应用，通过 host.docker.internal 连接既有数据服务，
+#   避免端口冲突，实现"一条命令启动全部本周服务"。
+#   密钥通过 .env 注入，compose 文件只写 ${VAR} 引用（手册步骤6）。
+# ============================================
+version: "3.8"
+
+services:
+  superset:
+    build: ./superset
+    container_name: bi-superset
+    environment:
+      SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY:-dev_secret_key_change_me}
+      SUPERSET_ADMIN_USER: ${SUPERSET_ADMIN_USER:-admin}
+      SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:-admin}
+      SUPERSET_ADMIN_EMAIL: ${SUPERSET_ADMIN_EMAIL:-admin@example.com}
+      # 容器内访问宿主机 Hive/MySQL
+      HIVE_HOST: host.docker.internal
+      MYSQL_HOST: host.docker.internal
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./superset/superset_home:/app/superset_home
+      - ./superset/init_superset.sh:/init_superset.sh:ro
+    command: >
+      bash -c "/init_superset.sh && superset run -h 0.0.0.0 -p 8088 --with-threads"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8088/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+    restart: unless-stopped
+
+  app:
+    build: ./app
+    container_name: bi-streamlit-app
+    environment:
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      USE_HIVE: "0"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./echarts/data:/app/echarts/data:ro
+    depends_on:
+      superset:
+        condition: service_healthy
+    restart: unless-stopped

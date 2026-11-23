@@ -1,0 +1,50 @@
+[
+  {
+    "category": "运动户外",
+    "orders": 4821,
+    "qty": 22419,
+    "netSales": 81960164.25
+  },
+  {
+    "category": "数码家电",
+    "orders": 4497,
+    "qty": 19918,
+    "netSales": 77383940.57
+  },
+  {
+    "category": "服饰鞋包",
+    "orders": 4174,
+    "qty": 18730,
+    "netSales": 71742823.6
+  },
+  {
+    "category": "食品生鲜",
+    "orders": 4108,
+    "qty": 18395,
+    "netSales": 68277997.82
+  },
+  {
+    "category": "图书文娱",
+    "orders": 4155,
+    "qty": 17740,
+    "netSales": 66108578.36
+  },
+  {
+    "category": "家居生活",
+    "orders": 3791,
+    "qty": 17303,
+    "netSales": 63823904.63
+  },
+  {
+    "category": "美妆个护",
+    "orders": 3792,
+    "qty": 16208,
+    "netSales": 59839872.73
+  },
+  {
+    "category": "母婴玩具",
+    "orders": 3702,
+    "qty": 15809,
+    "netSales": 58560643.89
+  }
+]

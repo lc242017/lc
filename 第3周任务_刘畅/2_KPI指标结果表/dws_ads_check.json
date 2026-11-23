@@ -1,0 +1,12 @@
+{
+  "gmv_from_dwd": 9051397.85,
+  "gmv_from_dws": 9051397.85,
+  "gmv_from_ads": 9051397.85,
+  "gmv_from_channel": 9051397.85,
+  "gmv_from_week": 9051397.85,
+  "orders_from_dwd": 116192,
+  "orders_from_dws": 116192,
+  "orders_from_ads": 116192,
+  "gmv_consistent": true,
+  "orders_consistent": true
+}
