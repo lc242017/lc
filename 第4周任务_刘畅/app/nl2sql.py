@@ -189,11 +189,12 @@ def answer(question, future_days=None, year=None):
             model = {"error": str(ex)}
     elif USE_HIVE:
         cols, rows = _hive(sql)
-    else:
+    elif preloaded is None and ds is not None:
         data = _rows_for(ds, year)
         if ds == "kpi":
             k = data[0]
-            cols = ["gmv", "orders", "aov", "users", "stores", "refundRate"]
+            # 列名与界面 KPI 卡片保持一致（user_cnt/store_cnt/refund_rate）
+            cols = ["gmv", "orders", "aov", "user_cnt", "store_cnt", "refund_rate"]
             rows = [[str(k["gmv"]), str(k["orders"]), str(k["aov"]),
                      str(k["users"]), str(k["stores"]), str(k["refundRate"])]]
         elif ds == "trend":

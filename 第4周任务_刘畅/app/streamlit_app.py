@@ -10,6 +10,7 @@
 import json
 import os
 import re
+import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
 from nl2sql import answer, extract_days
@@ -209,13 +210,13 @@ if q:
         f1.metric("日均预测 GMV", f"{sum(x['pred'] for x in fut)/len(fut):,.2f} 元" if fut else "-")
         f2.metric("区间累计 GMV", f"{sum(x['pred'] for x in fut):,.2f} 元")
         f3.metric("预测区间", f"{fut[0]['date']} ~ {fut[-1]['date']}" if fut else "-")
-        st.dataframe(
+        fut_df = pd.DataFrame(
             [[x["date"], x["year"],
               "周末" if x["is_weekend"] else "工作日",
               "会员日" if x["is_promo"] else "普通日",
               f"{x['pred']:,.2f}"] for x in fut],
-            headers=["日期", "年份", "星期类型", "营销类型", "预测 GMV（元）"],
-            use_container_width=True)
+            columns=["日期", "年份", "星期类型", "营销类型", "预测 GMV（元）"])
+        st.dataframe(fut_df, use_container_width=True)
         st.caption("预测值由 lag1/ma7 + 周末/会员日特征线性回归滚动生成，"
                    "改天数/基准年份或用“查看预测年份”筛选即自动重算。"
                    "趋势参考，遇大促/节假日需人工修正。")
@@ -360,7 +361,12 @@ if q:
 
     # 明细数据表
     with st.expander("📋 查看查询结果数据表"):
-        st.dataframe(display_rows, use_container_width=True)
+        if chart == "forecast":
+            detail_cols = ["日期", "实际 GMV（元）", "预测 GMV（元）"]
+        else:
+            detail_cols = list(cols_)
+        st.dataframe(pd.DataFrame(display_rows, columns=detail_cols),
+                     use_container_width=True)
 
 else:
     st.info("👆 请在上方输入问题，或点击示例问题快捷按钮开始查询。")
