@@ -93,8 +93,12 @@ def _metrics(actual, pred):
             "MAPE(%)": round(mape, 2), "样本数": n}
 
 
-def build_forecast():
-    """按手册步骤3完整跑一遍，返回结构化结果 dict"""
+def build_forecast(future_days=FUTURE_DAYS):
+    """按手册步骤3完整跑一遍，返回结构化结果 dict。
+
+    future_days: 需要自动输出的未来预测天数（由界面输入，默认 7，上限 365）。
+    """
+    future_days = max(1, min(int(future_days), 365))
     series = _load_daily()
     n = len(series)
     split = n - TEST_DAYS
@@ -153,7 +157,7 @@ def build_forecast():
     work = [dict(r) for r in series]
     future_rows = []
     last_date = date.fromisoformat(series[-1]["date"])
-    for step in range(1, FUTURE_DAYS + 1):
+    for step in range(1, future_days + 1):
         idx = len(work)
         f = _features(work, idx - 1)  # 基于已有序列末位构造特征
         # _features(work, idx-1) 用的是 work[idx-1] 的 lag1/ma7，正是最新可得
@@ -173,6 +177,7 @@ def build_forecast():
         "data_source": "Hive dws.dws_order_day（366天，有效订单口径，离线快照）",
         "train_days": split,
         "test_days": TEST_DAYS,
+        "future_days": future_days,
         "test_range": [actual_rows[0]["date"], actual_rows[-1]["date"]],
         "features": ["lag1", "ma7", "is_weekend", "is_promo", "is_pre_promo"],
         "model": model_metrics,
@@ -195,7 +200,7 @@ if __name__ == "__main__":
     print("基线lag1:", res["baseline_lag1"])
     print("基线ma7 :", res["baseline_ma7"])
     print("分段:", json.dumps(res["segments"], ensure_ascii=False))
-    print("未来7天:")
+    print(f"未来{res['future_days']}天:")
     for r in res["future_rows"]:
         print("  ", r["date"], r["pred"])
     print("回归系数:", json.dumps(res["coef"], ensure_ascii=False))

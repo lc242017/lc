@@ -41,7 +41,7 @@ def _build_forecast_history():
 
 # ---- 意图识别规则：关键词 -> 数据集 + SQL 模板 ----
 RULES = [
-    (r"(预测|预估|预计|forecast).*(gmv|销售|订单|额)|预测|预估|预计",
+    (r"(预测|预估|预计|forecast).*(gmv|销售|订单|额)|预测|预估|预计|未来\s*\d{1,3}\s*天",
      "forecast", "SELECT order_date,gmv FROM dws.dws_order_day ORDER BY order_date",
      "forecast", "GMV 趋势预测建模（手册步骤3 · lag1/ma7+线性回归）"),
     (r"(gmv|成交|销售总额|总额|营业额).*(多少|总共|总体|多少)|总体|整体|总览|核心指标|kpi",
@@ -93,18 +93,30 @@ def parse(question):
     return sql, "kpi", "kpi", "核心经营指标（默认）", None
 
 
-def answer(question):
+def extract_days(question, default=7):
+    """从问题中抽取预测天数：'未来30天'、'预测14天'、'7天预测'、'30 d' 等。"""
+    m = re.search(r"(?:未来|接着|往后|预测|预估)?\s*(\d{1,3})\s*(?:天|日|days?|d)", question, re.I)
+    if m:
+        v = int(m.group(1))
+        if 1 <= v <= 365:
+            return v
+    return default
+
+
+def answer(question, future_days=None):
     """返回 dict: {question, sql, chart, title, columns, rows, model?}
-    chart=='forecast' 时额外携带 model：第3周手册步骤3的完整预测建模结果。"""
+    chart=='forecast' 时额外携带 model：第3周手册步骤3的完整预测建模结果。
+    future_days: 界面传入的预测天数；不传则从问题文本中抽取，默认 7。"""
     sql, ds, chart, title, preloaded = parse(question)
     model = None
     if preloaded is not None:
         cols, rows = preloaded
         rows = [[str(x) for x in r] for r in rows]
     if chart == "forecast":
+        days = future_days if future_days is not None else extract_days(question)
         try:
             from forecast_model import build_forecast
-            model = build_forecast()
+            model = build_forecast(days)
         except Exception as ex:
             model = {"error": str(ex)}
     elif USE_HIVE:

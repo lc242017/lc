@@ -6,9 +6,10 @@
 """
 import json
 import os
+import re
 import streamlit as st
 import streamlit.components.v1 as components
-from nl2sql import answer
+from nl2sql import answer, extract_days
 
 
 @st.cache_data(show_spinner=False)
@@ -30,14 +31,13 @@ st.caption("基于 ADS 指标层的 NL2SQL 对话应用 · 输入经营问题，
 
 # 示例问题快捷按钮
 examples = ["总体GMV是多少", "月度销售趋势", "品类销售排行",
-            "支付方式占比", "门店销售Top10", "未来销量预测"]
+            "支付方式占比", "门店销售Top10", "预测未来7天"]
 
-# 用 session_state 保持问题与手动预测输入，避免控件刷新后丢失
+# 用 session_state 保持问题与预测天数，避免控件刷新后丢失
 if "question" not in st.session_state:
     st.session_state.question = ""
-for i, m in enumerate(["2025-01", "2025-02", "2025-03"]):
-    st.session_state.setdefault(f"manual_month_{i}", m)
-    st.session_state.setdefault(f"manual_gmv_{i}", 330.0)
+if "forecast_days" not in st.session_state:
+    st.session_state.forecast_days = 7
 
 q = st.text_input("请输入你的问题，例如：广东省上月销售额是多少？",
                   value=st.session_state.question)
@@ -47,10 +47,28 @@ for i, ex in enumerate(examples):
         q = ex
         st.session_state.question = ex
 
+# 预测类问题：在查询前展示天数输入框，输入后自动输出对应天数的预测值
+is_forecast_q = bool(q and re.search(r"预测|预估|预计|forecast|未来\s*\d{1,3}\s*天", q, re.I))
+if q and st.session_state.get("_last_q") != q:
+    # 问题变化时，优先采用问题文本里写的天数（如“预测未来30天”）
+    st.session_state.forecast_days = extract_days(q, 7)
+    st.session_state._last_q = q
+forecast_days = st.session_state.forecast_days
+if is_forecast_q:
+    fc1, fc2 = st.columns([1, 3])
+    with fc1:
+        forecast_days = st.number_input(
+            "预测未来天数（天）", min_value=1, max_value=365, step=1,
+            key="forecast_days",
+            help="输入天数后自动输出未来每天的预测 GMV")
+    with fc2:
+        st.caption("🚀 修改天数即自动重新预测，无需手动填写数值；"
+                   "也可以直接在问题里写“预测未来30天”。")
+
 if q:
     st.session_state.question = q
     with st.spinner("正在解析问题并查询 ADS 指标层 ..."):
-        r = answer(q)
+        r = answer(q, future_days=forecast_days if is_forecast_q else None)
 
     st.markdown(f"**你的问题**：{r['question']}")
 
@@ -107,7 +125,7 @@ if q:
         """
         components.html(cmp_html, height=340, scrolling=False)
 
-        # 未来预测（历史末尾 + 未来 7 天连线）
+        # 未来预测（历史末尾 + 未来 N 天连线）
         hist = model["history"][-30:]
         fut = model["future_rows"]
         hist_labels = [h["date"][5:] for h in hist]
@@ -137,8 +155,22 @@ if q:
         window.addEventListener('resize',()=>c.resize());</script>
         """
         components.html(fut_html, height=340, scrolling=False)
-        st.caption(f"未来 {len(fut)} 天日均预测 GMV：{model['future_avg']:,.2f} 元。"
-                   "模型为趋势参考，遇大促/节假日需人工修正。")
+
+        # ★ 输入天数 → 自动输出每天预测值
+        st.markdown(f"##### 🔮 未来 {len(fut)} 天预测值（自动输出）")
+        f1, f2, f3 = st.columns(3)
+        f1.metric("日均预测 GMV", f"{model['future_avg']:,.2f} 元")
+        f2.metric("区间累计 GMV", f"{sum(x['pred'] for x in fut):,.2f} 元")
+        f3.metric("预测区间", f"{fut[0]['date']} ~ {fut[-1]['date']}")
+        st.dataframe(
+            [[x["date"],
+              "周末" if x["is_weekend"] else "工作日",
+              "会员日" if x["is_promo"] else "普通日",
+              f"{x['pred']:,.2f}"] for x in fut],
+            headers=["日期", "星期类型", "营销类型", "预测 GMV（元）"],
+            use_container_width=True)
+        st.caption("预测值由 lag1/ma7 + 周末/会员日特征线性回归滚动生成，"
+                   "修改上方“预测未来天数”即自动重算。趋势参考，遇大促/节假日需人工修正。")
 
         # 模型边界说明（手册要求：批判性看待模型精度）
         with st.expander("⚠️ 模型适用边界与评估说明", expanded=False):
@@ -156,23 +188,6 @@ if q:
             - **外推风险**：线性回归对突变（大促、节假日、异常流量）响应滞后，
               预测值仅供趋势参考，落地需业务人工复核。
             """)
-
-        # 手动输入对照（保留上一轮功能，作为人工校准）
-        with st.expander("✍️ 手动输入预测值（人工校准对照）", expanded=False):
-            st.caption("按手册要求，模型预测需批判性看待。你可在此填入人工预估，"
-                       "与模型结果对照；单位：万元。")
-            inputs = st.columns(3)
-            for i in range(3):
-                with inputs[i]:
-                    st.text_input(f"第 {i + 1} 个月（YYYY-MM）", key=f"manual_month_{i}")
-                    st.number_input(f"GMV 预测值（万元）", key=f"manual_gmv_{i}",
-                                    min_value=0.0, format="%.2f")
-            manual_labels = [st.session_state[f"manual_month_{i}"] for i in range(3)]
-            manual_vals = [float(st.session_state[f"manual_gmv_{i}"]) for i in range(3)]
-            st.markdown("**人工预估**：" + " · ".join(
-                f"{lbl} {val:,.0f} 万元" for lbl, val in zip(manual_labels, manual_vals)))
-            st.caption(f"模型未来 7 天日均 {model['future_avg']/10000:.2f} 万元，"
-                       "可与你的经验预估交叉验证。")
 
         # 明细表改展示模型对比结果
         display_rows = [[x["date"], f"{x['actual']:.2f}", f"{x['pred']:.2f}"]
@@ -273,5 +288,6 @@ else:
     - **排行分析**：品类销售排行、门店 Top10
     - **结构分析**：支付方式占比、区域销售
     - **单值查询**：浙江省销售额是多少
-    - **趋势预测**：未来销量预测、预测下月GMV、GMV预测（第3周手册标准：lag1/ma7特征+线性回归+MAE/MAPE评估+未来7天预测，附手动校准对照）
+    - **趋势预测**：输入天数即自动输出对应天数每天预测值，例如“预测未来30天”；
+      或点击快捷按钮后修改“预测未来天数”。第3周手册标准：lag1/ma7 特征 + 线性回归 + MAE/MAPE 评估 + 基线对比
     """)
