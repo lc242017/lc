@@ -240,15 +240,17 @@ if q:
         display_rows = [[x["date"], f"{x['actual']:.2f}", f"{x['pred']:.2f}"]
                         for x in ac_rows]
 
-    # ---- 年度总览（全部年份时展示跨年 KPI 对比）----
-    if chart == "kpi" and used_year is None:
+    # ---- KPI：指标卡 + 跨年对比图（所有年份都有图）----
+    if chart == "kpi" and rows:
         annual = _annual_data()
-        st.markdown("##### 📊 全部年份 KPI 对比（2024 真实，其余模拟）")
         yk = [annual["kpi"][str(y)][0] for y in YEARS]
+        st.markdown("##### 📊 各年份 GMV / 订单数对比（🟢2024真实 · 🟡其余模拟）")
         yopt = {
             "tooltip": {"trigger": "axis"},
             "legend": {"data": ["GMV", "订单数"], "bottom": 0},
-            "grid": {"left": 70, "right": 60, "top": 30, "bottom": 50},
+            "grid": {"left": 70, "right": 60, "top": 40, "bottom": 50},
+            "title": {"text": "当前查询" if used_year is None else f"{used_year} 年",
+                      "left": "center", "textStyle": {"fontSize": 13}},
             "xAxis": {"type": "category", "data": [str(y) for y in YEARS]},
             "yAxis": [
                 {"type": "value", "name": "GMV(万元)"},
@@ -272,8 +274,6 @@ if q:
         """
         components.html(yhtml, height=340, scrolling=False)
 
-    # KPI 卡片
-    if chart == "kpi" and rows:
         v = rows[0]
         m = dict(zip(cols_, v))
         k1, k2, k3 = st.columns(3)
@@ -285,12 +285,40 @@ if q:
         c2.metric("门店数", m["store_cnt"])
         c3.metric("退款率", f"{m['refund_rate']}%")
 
-    # 单值
+    # ---- 单值（省份）：数字 + 全国区域排行图并高亮该省 ----
     elif chart == "value" and rows:
-        for c, val in zip(cols_, rows[0]):
-            st.metric(c, f"{float(val)/10000:,.2f} 万元" if c == "gmv" else val)
+        province = rows[0][0]
+        val = rows[0][1]
+        st.metric(f"{province}销售 GMV", f"{float(val)/10000:,.2f} 万元")
+        annual = _annual_data()
+        year_key = str(used_year) if used_year in YEARS else "2024"
+        region_rows = annual["region"][year_key]
+        region_rows = sorted(region_rows, key=lambda r: float(r["gmv"]), reverse=True)
+        rlabels = [r["province"] for r in region_rows]
+        rvals = [float(r["gmv"]) for r in region_rows]
+        colors = ["#ff7a45" if r["province"] == province else "#4fd1ff"
+                  for r in region_rows]
+        st.markdown(f"##### 📊 {year_key} 年全国区域 GMV 排行（橙色为当前查询省份）")
+        ropt = {
+            "tooltip": {"trigger": "axis", "valueFormatter": "{c} 元"},
+            "grid": {"left": 95, "right": 50, "top": 20, "bottom": 40},
+            "xAxis": {"type": "value"},
+            "yAxis": {"type": "category", "data": list(reversed(rlabels))},
+            "series": [{"type": "bar",
+                        "data": [{"value": v, "itemStyle": {"color": c}}
+                                 for v, c in zip(reversed(rvals), reversed(colors))],
+                        "label": {"show": True, "position": "right", "fontSize": 10}}],
+        }
+        rhtml = f"""
+        <div id="regioncmp" style="width:100%;height:460px;"></div>
+        {_echarts_script()}
+        <script>var c=echarts.init(document.getElementById('regioncmp'));
+        c.setOption({json.dumps(ropt, ensure_ascii=False)});
+        window.addEventListener('resize',()=>c.resize());</script>
+        """
+        components.html(rhtml, height=480, scrolling=False)
 
-    # ECharts 图表渲染（forecast 已在上方单独渲染）
+    # ECharts 图表渲染（forecast / kpi / value 已在上方单独渲染）
     elif chart != "forecast":
         labels = [row[0] for row in display_rows]
         vals = [float(row[1]) if len(row) > 1 else 0 for row in display_rows]
