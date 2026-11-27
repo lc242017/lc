@@ -1,0 +1,2177 @@
+{
+  "meta": {
+    "real_year": 2024,
+    "years": [
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "simulated_years": [
+      2022,
+      2023,
+      2025,
+      2026
+    ],
+    "note": "2024 为 Hive ads 库真实数据；2022/2023/2025/2026 基于 2024 按年度增长系数模拟扩展，仅供多年度问答演示，不与真实口径混用。",
+    "data_source": "Hive ads（2024 真实） + 模拟扩展（其他年份）"
+  },
+  "kpi": {
+    "2022": [
+      {
+        "gmv": 29384400.36,
+        "orders": 10767,
+        "aov": 2520.0,
+        "users": 850,
+        "stores": 48,
+        "refundRate": 5.08,
+        "year": 2022,
+        "source": "simulated"
+      }
+    ],
+    "2023": [
+      {
+        "gmv": 34149438.25,
+        "orders": 12513,
+        "aov": 2580.0,
+        "users": 890,
+        "stores": 51,
+        "refundRate": 5.61,
+        "year": 2023,
+        "source": "simulated"
+      }
+    ],
+    "2024": [
+      {
+        "gmv": 39708649.13,
+        "orders": 15000,
+        "aov": 2647.24,
+        "users": 1000,
+        "stores": 60,
+        "refundRate": 5.45,
+        "year": 2024,
+        "source": "real"
+      }
+    ],
+    "2025": [
+      {
+        "gmv": 45664946.5,
+        "orders": 16732,
+        "aov": 2710.0,
+        "users": 970,
+        "stores": 57,
+        "refundRate": 5.18,
+        "year": 2025,
+        "source": "simulated"
+      }
+    ],
+    "2026": [
+      {
+        "gmv": 52018330.36,
+        "orders": 19060,
+        "aov": 2770.0,
+        "users": 1010,
+        "stores": 60,
+        "refundRate": 5.48,
+        "year": 2026,
+        "source": "simulated"
+      }
+    ]
+  },
+  "trend": {
+    "2022": [
+      {
+        "month": "2022-01",
+        "gmv": 2536798.26,
+        "orders": 899,
+        "aov": 2821.8,
+        "discount": 335648.88,
+        "refund": 48,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-02",
+        "gmv": 2466849.01,
+        "orders": 834,
+        "aov": 2957.85,
+        "discount": 305988.44,
+        "refund": 44,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-03",
+        "gmv": 2482033.14,
+        "orders": 966,
+        "aov": 2569.39,
+        "discount": 323560.74,
+        "refund": 53,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-04",
+        "gmv": 2400212.29,
+        "orders": 838,
+        "aov": 2864.22,
+        "discount": 320716.67,
+        "refund": 41,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-05",
+        "gmv": 2357505.31,
+        "orders": 890,
+        "aov": 2648.88,
+        "discount": 337738.24,
+        "refund": 37,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-06",
+        "gmv": 2400550.59,
+        "orders": 848,
+        "aov": 2830.84,
+        "discount": 305299.03,
+        "refund": 43,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-07",
+        "gmv": 2250877.59,
+        "orders": 937,
+        "aov": 2402.22,
+        "discount": 304094.82,
+        "refund": 48,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-08",
+        "gmv": 2555196.4,
+        "orders": 882,
+        "aov": 2897.05,
+        "discount": 323979.01,
+        "refund": 61,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-09",
+        "gmv": 2510766.61,
+        "orders": 912,
+        "aov": 2753.03,
+        "discount": 323552.22,
+        "refund": 43,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-10",
+        "gmv": 2266725.78,
+        "orders": 959,
+        "aov": 2363.63,
+        "discount": 320939.97,
+        "refund": 54,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-11",
+        "gmv": 2422386.71,
+        "orders": 890,
+        "aov": 2721.78,
+        "discount": 315216.85,
+        "refund": 52,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "month": "2022-12",
+        "gmv": 2567362.91,
+        "orders": 943,
+        "aov": 2722.55,
+        "discount": 326701.33,
+        "refund": 57,
+        "year": 2022,
+        "source": "simulated"
+      }
+    ],
+    "2023": [
+      {
+        "month": "2023-01",
+        "gmv": 3116019.14,
+        "orders": 1017,
+        "aov": 3063.93,
+        "discount": 390078.43,
+        "refund": 56,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-02",
+        "gmv": 2826473.08,
+        "orders": 1011,
+        "aov": 2795.72,
+        "discount": 355608.19,
+        "refund": 51,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-03",
+        "gmv": 2931406.42,
+        "orders": 1096,
+        "aov": 2674.64,
+        "discount": 376030.05,
+        "refund": 61,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-04",
+        "gmv": 2841264.92,
+        "orders": 1012,
+        "aov": 2807.57,
+        "discount": 372724.78,
+        "refund": 48,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-05",
+        "gmv": 2801952.64,
+        "orders": 1081,
+        "aov": 2592.0,
+        "discount": 392506.61,
+        "refund": 43,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-06",
+        "gmv": 2575603.5,
+        "orders": 945,
+        "aov": 2725.51,
+        "discount": 354806.98,
+        "refund": 50,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-07",
+        "gmv": 2612852.76,
+        "orders": 1078,
+        "aov": 2423.8,
+        "discount": 353407.5,
+        "refund": 55,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-08",
+        "gmv": 2968283.55,
+        "orders": 1066,
+        "aov": 2784.51,
+        "discount": 376516.14,
+        "refund": 71,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-09",
+        "gmv": 3000730.9,
+        "orders": 1039,
+        "aov": 2888.1,
+        "discount": 376020.15,
+        "refund": 50,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-10",
+        "gmv": 2760943.84,
+        "orders": 1044,
+        "aov": 2644.58,
+        "discount": 372984.29,
+        "refund": 63,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-11",
+        "gmv": 2859430.68,
+        "orders": 999,
+        "aov": 2862.29,
+        "discount": 366333.1,
+        "refund": 60,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "month": "2023-12",
+        "gmv": 2906994.51,
+        "orders": 1030,
+        "aov": 2822.32,
+        "discount": 379679.93,
+        "refund": 66,
+        "year": 2023,
+        "source": "simulated"
+      }
+    ],
+    "2024": [
+      {
+        "month": "2024-01",
+        "gmv": 3529060.52,
+        "orders": 1278,
+        "aov": 2761.39,
+        "discount": 453579.57,
+        "refund": 68,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-02",
+        "gmv": 3203690.08,
+        "orders": 1203,
+        "aov": 2663.08,
+        "discount": 413497.89,
+        "refund": 62,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-03",
+        "gmv": 3397486.98,
+        "orders": 1288,
+        "aov": 2637.8,
+        "discount": 437244.24,
+        "refund": 74,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-04",
+        "gmv": 3336398.19,
+        "orders": 1219,
+        "aov": 2737.0,
+        "discount": 433400.91,
+        "refund": 58,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-05",
+        "gmv": 3320614.89,
+        "orders": 1301,
+        "aov": 2552.36,
+        "discount": 456403.03,
+        "refund": 52,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-06",
+        "gmv": 3089283.59,
+        "orders": 1154,
+        "aov": 2677.02,
+        "discount": 412566.26,
+        "refund": 61,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-07",
+        "gmv": 3219103.51,
+        "orders": 1244,
+        "aov": 2587.7,
+        "discount": 410938.95,
+        "refund": 67,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-08",
+        "gmv": 3392166.5,
+        "orders": 1274,
+        "aov": 2662.61,
+        "discount": 437809.47,
+        "refund": 86,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-09",
+        "gmv": 3308150.71,
+        "orders": 1228,
+        "aov": 2693.93,
+        "discount": 437232.73,
+        "refund": 60,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-10",
+        "gmv": 3236101.8,
+        "orders": 1289,
+        "aov": 2510.55,
+        "discount": 433702.66,
+        "refund": 76,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-11",
+        "gmv": 3266936.19,
+        "orders": 1231,
+        "aov": 2653.89,
+        "discount": 425968.72,
+        "refund": 73,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "month": "2024-12",
+        "gmv": 3409656.19,
+        "orders": 1291,
+        "aov": 2641.1,
+        "discount": 441488.29,
+        "refund": 80,
+        "year": 2024,
+        "source": "real"
+      }
+    ],
+    "2025": [
+      {
+        "month": "2025-01",
+        "gmv": 4100923.63,
+        "orders": 1383,
+        "aov": 2965.24,
+        "discount": 521616.51,
+        "refund": 75,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-02",
+        "gmv": 3839947.24,
+        "orders": 1304,
+        "aov": 2944.74,
+        "discount": 475522.57,
+        "refund": 69,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-03",
+        "gmv": 3770419.25,
+        "orders": 1470,
+        "aov": 2564.91,
+        "discount": 502830.88,
+        "refund": 82,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-04",
+        "gmv": 3858692.48,
+        "orders": 1386,
+        "aov": 2784.05,
+        "discount": 498411.05,
+        "refund": 64,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-05",
+        "gmv": 3967076.58,
+        "orders": 1503,
+        "aov": 2639.44,
+        "discount": 524863.48,
+        "refund": 58,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-06",
+        "gmv": 3559480.51,
+        "orders": 1244,
+        "aov": 2861.32,
+        "discount": 474451.2,
+        "refund": 68,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-07",
+        "gmv": 3765566.6,
+        "orders": 1447,
+        "aov": 2602.33,
+        "discount": 472579.79,
+        "refund": 74,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-08",
+        "gmv": 3915318.04,
+        "orders": 1457,
+        "aov": 2687.25,
+        "discount": 503480.89,
+        "refund": 95,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-09",
+        "gmv": 3758444.18,
+        "orders": 1437,
+        "aov": 2615.48,
+        "discount": 502817.64,
+        "refund": 66,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-10",
+        "gmv": 3808952.18,
+        "orders": 1399,
+        "aov": 2722.62,
+        "discount": 498758.06,
+        "refund": 84,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-11",
+        "gmv": 3916421.42,
+        "orders": 1390,
+        "aov": 2817.57,
+        "discount": 489864.03,
+        "refund": 81,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "month": "2025-12",
+        "gmv": 4045920.48,
+        "orders": 1509,
+        "aov": 2681.19,
+        "discount": 507711.53,
+        "refund": 89,
+        "year": 2025,
+        "source": "simulated"
+      }
+    ],
+    "2026": [
+      {
+        "month": "2026-01",
+        "gmv": 4703106.5,
+        "orders": 1587,
+        "aov": 2963.52,
+        "discount": 594189.24,
+        "refund": 86,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-02",
+        "gmv": 4386151.62,
+        "orders": 1482,
+        "aov": 2959.62,
+        "discount": 541682.24,
+        "refund": 78,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-03",
+        "gmv": 4340142.19,
+        "orders": 1683,
+        "aov": 2578.81,
+        "discount": 572789.95,
+        "refund": 94,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-04",
+        "gmv": 4379867.99,
+        "orders": 1536,
+        "aov": 2851.48,
+        "discount": 567755.19,
+        "refund": 73,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-05",
+        "gmv": 4210661.38,
+        "orders": 1664,
+        "aov": 2530.45,
+        "discount": 597887.97,
+        "refund": 66,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-06",
+        "gmv": 4201979.19,
+        "orders": 1472,
+        "aov": 2854.61,
+        "discount": 540461.8,
+        "refund": 77,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-07",
+        "gmv": 3983974.16,
+        "orders": 1620,
+        "aov": 2459.24,
+        "discount": 538330.02,
+        "refund": 85,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-08",
+        "gmv": 4705746.74,
+        "orders": 1602,
+        "aov": 2937.42,
+        "discount": 573530.41,
+        "refund": 109,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-09",
+        "gmv": 4183137.65,
+        "orders": 1500,
+        "aov": 2788.76,
+        "discount": 572774.88,
+        "refund": 76,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-10",
+        "gmv": 4266378.14,
+        "orders": 1678,
+        "aov": 2542.54,
+        "discount": 568150.48,
+        "refund": 96,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-11",
+        "gmv": 4050791.61,
+        "orders": 1527,
+        "aov": 2652.78,
+        "discount": 558019.02,
+        "refund": 92,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "month": "2026-12",
+        "gmv": 4377151.99,
+        "orders": 1571,
+        "aov": 2786.22,
+        "discount": 578349.66,
+        "refund": 101,
+        "year": 2026,
+        "source": "simulated"
+      }
+    ]
+  },
+  "category": {
+    "2022": [
+      {
+        "category": "运动户外",
+        "orders": 3460,
+        "qty": 16092,
+        "netSales": 61853450.18,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "category": "数码家电",
+        "orders": 3227,
+        "qty": 14297,
+        "netSales": 57146461.66,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "category": "服饰鞋包",
+        "orders": 2996,
+        "qty": 13444,
+        "netSales": 51112440.51,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "category": "食品生鲜",
+        "orders": 2948,
+        "qty": 13203,
+        "netSales": 48631314.82,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "category": "图书文娱",
+        "orders": 2982,
+        "qty": 12733,
+        "netSales": 50038743.52,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "category": "家居生活",
+        "orders": 2721,
+        "qty": 12420,
+        "netSales": 48310684.37,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "category": "美妆个护",
+        "orders": 2721,
+        "qty": 11634,
+        "netSales": 43108848.84,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "category": "母婴玩具",
+        "orders": 2657,
+        "qty": 11347,
+        "netSales": 44855298.21,
+        "year": 2022,
+        "source": "simulated"
+      }
+    ],
+    "2023": [
+      {
+        "category": "运动户外",
+        "orders": 4021,
+        "qty": 18701,
+        "netSales": 68234811.28,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "category": "数码家电",
+        "orders": 3751,
+        "qty": 16615,
+        "netSales": 64990970.35,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "category": "服饰鞋包",
+        "orders": 3481,
+        "qty": 15624,
+        "netSales": 61413955.88,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "category": "食品生鲜",
+        "orders": 3426,
+        "qty": 15345,
+        "netSales": 57798183.33,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "category": "图书文娱",
+        "orders": 3466,
+        "qty": 14798,
+        "netSales": 58309693.32,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "category": "家居生活",
+        "orders": 3162,
+        "qty": 14434,
+        "netSales": 54602089.4,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "category": "美妆个护",
+        "orders": 3163,
+        "qty": 13520,
+        "netSales": 50862943.24,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "category": "母婴玩具",
+        "orders": 3088,
+        "qty": 13187,
+        "netSales": 50161558.34,
+        "year": 2023,
+        "source": "simulated"
+      }
+    ],
+    "2024": [
+      {
+        "category": "运动户外",
+        "orders": 4821,
+        "qty": 22419,
+        "netSales": 81960164.25,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "category": "数码家电",
+        "orders": 4497,
+        "qty": 19918,
+        "netSales": 77383940.57,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "category": "服饰鞋包",
+        "orders": 4174,
+        "qty": 18730,
+        "netSales": 71742823.6,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "category": "食品生鲜",
+        "orders": 4108,
+        "qty": 18395,
+        "netSales": 68277997.82,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "category": "图书文娱",
+        "orders": 4155,
+        "qty": 17740,
+        "netSales": 66108578.36,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "category": "家居生活",
+        "orders": 3791,
+        "qty": 17303,
+        "netSales": 63823904.63,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "category": "美妆个护",
+        "orders": 3792,
+        "qty": 16208,
+        "netSales": 59839872.73,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "category": "母婴玩具",
+        "orders": 3702,
+        "qty": 15809,
+        "netSales": 58560643.89,
+        "year": 2024,
+        "source": "real"
+      }
+    ],
+    "2025": [
+      {
+        "category": "运动户外",
+        "orders": 5377,
+        "qty": 25008,
+        "netSales": 92091995.2,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "category": "数码家电",
+        "orders": 5016,
+        "qty": 22218,
+        "netSales": 87773359.22,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "category": "服饰鞋包",
+        "orders": 4656,
+        "qty": 20893,
+        "netSales": 81038048.46,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "category": "食品生鲜",
+        "orders": 4582,
+        "qty": 20519,
+        "netSales": 81567343.33,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "category": "图书文娱",
+        "orders": 4634,
+        "qty": 19788,
+        "netSales": 78520178.83,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "category": "家居生活",
+        "orders": 4228,
+        "qty": 19301,
+        "netSales": 73791591.34,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "category": "美妆个护",
+        "orders": 4229,
+        "qty": 18080,
+        "netSales": 67307090.63,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "category": "母婴玩具",
+        "orders": 4129,
+        "qty": 17634,
+        "netSales": 69760862.92,
+        "year": 2025,
+        "source": "simulated"
+      }
+    ],
+    "2026": [
+      {
+        "category": "运动户外",
+        "orders": 6126,
+        "qty": 28487,
+        "netSales": 105704865.42,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "category": "数码家电",
+        "orders": 5714,
+        "qty": 25309,
+        "netSales": 98957976.5,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "category": "服饰鞋包",
+        "orders": 5303,
+        "qty": 23800,
+        "netSales": 92974920.74,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "category": "食品生鲜",
+        "orders": 5220,
+        "qty": 23374,
+        "netSales": 91636371.35,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "category": "图书文娱",
+        "orders": 5279,
+        "qty": 22542,
+        "netSales": 83500066.38,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "category": "家居生活",
+        "orders": 4817,
+        "qty": 21986,
+        "netSales": 85781401.55,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "category": "美妆个护",
+        "orders": 4818,
+        "qty": 20595,
+        "netSales": 77513707.47,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "category": "母婴玩具",
+        "orders": 4704,
+        "qty": 20088,
+        "netSales": 75401351.84,
+        "year": 2026,
+        "source": "simulated"
+      }
+    ]
+  },
+  "region": {
+    "2022": [
+      {
+        "province": "浙江省",
+        "orders": 1248,
+        "gmv": 3584243.01,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "湖南省",
+        "orders": 1105,
+        "gmv": 2834966.48,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "四川省",
+        "orders": 1070,
+        "gmv": 2915135.77,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "辽宁省",
+        "orders": 878,
+        "gmv": 2453261.59,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "陕西省",
+        "orders": 877,
+        "gmv": 2390456.96,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "江苏省",
+        "orders": 737,
+        "gmv": 2131146.32,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "河南省",
+        "orders": 722,
+        "gmv": 1971052.87,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "福建省",
+        "orders": 699,
+        "gmv": 2063666.12,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "重庆市",
+        "orders": 712,
+        "gmv": 1944815.54,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "上海市",
+        "orders": 730,
+        "gmv": 1948349.42,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "山东省",
+        "orders": 551,
+        "gmv": 1491035.64,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "湖北省",
+        "orders": 520,
+        "gmv": 1377444.47,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "北京市",
+        "orders": 388,
+        "gmv": 1031966.73,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "安徽省",
+        "orders": 361,
+        "gmv": 987778.83,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "province": "广东省",
+        "orders": 163,
+        "gmv": 466550.63,
+        "year": 2022,
+        "source": "simulated"
+      }
+    ],
+    "2023": [
+      {
+        "province": "浙江省",
+        "orders": 1451,
+        "gmv": 4150420.1,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "湖南省",
+        "orders": 1284,
+        "gmv": 3465333.62,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "四川省",
+        "orders": 1243,
+        "gmv": 3210847.75,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "辽宁省",
+        "orders": 1021,
+        "gmv": 2872448.52,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "陕西省",
+        "orders": 1020,
+        "gmv": 2816925.31,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "江苏省",
+        "orders": 856,
+        "gmv": 2423278.54,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "河南省",
+        "orders": 840,
+        "gmv": 2418937.21,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "福建省",
+        "orders": 812,
+        "gmv": 2334547.18,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "重庆市",
+        "orders": 827,
+        "gmv": 2198167.04,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "上海市",
+        "orders": 848,
+        "gmv": 2232040.33,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "山东省",
+        "orders": 640,
+        "gmv": 1746483.7,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "湖北省",
+        "orders": 604,
+        "gmv": 1689366.46,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "北京市",
+        "orders": 451,
+        "gmv": 1169992.31,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "安徽省",
+        "orders": 419,
+        "gmv": 1128078.95,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "province": "广东省",
+        "orders": 190,
+        "gmv": 572169.11,
+        "year": 2023,
+        "source": "simulated"
+      }
+    ],
+    "2024": [
+      {
+        "province": "浙江省",
+        "orders": 1740,
+        "gmv": 4720407.69,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "湖南省",
+        "orders": 1540,
+        "gmv": 3939843.14,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "四川省",
+        "orders": 1491,
+        "gmv": 3872745.43,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "辽宁省",
+        "orders": 1224,
+        "gmv": 3312154.1,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "陕西省",
+        "orders": 1223,
+        "gmv": 3241286.37,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "江苏省",
+        "orders": 1027,
+        "gmv": 2792420.33,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "河南省",
+        "orders": 1007,
+        "gmv": 2710637.2,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "福建省",
+        "orders": 974,
+        "gmv": 2684391.43,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "重庆市",
+        "orders": 992,
+        "gmv": 2622502.7,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "上海市",
+        "orders": 1017,
+        "gmv": 2598119.93,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "山东省",
+        "orders": 768,
+        "gmv": 1954664.48,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "湖北省",
+        "orders": 725,
+        "gmv": 1896850.9,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "北京市",
+        "orders": 541,
+        "gmv": 1355176.22,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "安徽省",
+        "orders": 503,
+        "gmv": 1355035.84,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "province": "广东省",
+        "orders": 228,
+        "gmv": 652413.38,
+        "year": 2024,
+        "source": "real"
+      }
+    ],
+    "2025": [
+      {
+        "province": "浙江省",
+        "orders": 1940,
+        "gmv": 5285251.12,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "湖南省",
+        "orders": 1717,
+        "gmv": 4702530.94,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "四川省",
+        "orders": 1663,
+        "gmv": 4455771.34,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "辽宁省",
+        "orders": 1365,
+        "gmv": 3761404.87,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "陕西省",
+        "orders": 1364,
+        "gmv": 3584968.63,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "江苏省",
+        "orders": 1145,
+        "gmv": 3248101.93,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "河南省",
+        "orders": 1123,
+        "gmv": 3097368.67,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "福建省",
+        "orders": 1086,
+        "gmv": 3033510.28,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "重庆市",
+        "orders": 1106,
+        "gmv": 2954189.27,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "上海市",
+        "orders": 1134,
+        "gmv": 2905295.92,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "山东省",
+        "orders": 856,
+        "gmv": 2163276.5,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "湖北省",
+        "orders": 808,
+        "gmv": 2255194.23,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "北京市",
+        "orders": 603,
+        "gmv": 1589003.19,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "安徽省",
+        "orders": 561,
+        "gmv": 1558495.62,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "province": "广东省",
+        "orders": 254,
+        "gmv": 749370.05,
+        "year": 2025,
+        "source": "simulated"
+      }
+    ],
+    "2026": [
+      {
+        "province": "浙江省",
+        "orders": 2211,
+        "gmv": 5998281.93,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "湖南省",
+        "orders": 1956,
+        "gmv": 5276760.46,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "四川省",
+        "orders": 1894,
+        "gmv": 4975526.56,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "辽宁省",
+        "orders": 1555,
+        "gmv": 4324622.54,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "陕西省",
+        "orders": 1554,
+        "gmv": 4204995.57,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "江苏省",
+        "orders": 1305,
+        "gmv": 3615601.56,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "河南省",
+        "orders": 1279,
+        "gmv": 3550091.26,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "福建省",
+        "orders": 1237,
+        "gmv": 3634831.09,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "重庆市",
+        "orders": 1260,
+        "gmv": 3488675.94,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "上海市",
+        "orders": 1292,
+        "gmv": 3395814.47,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "山东省",
+        "orders": 975,
+        "gmv": 2553814.94,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "湖北省",
+        "orders": 921,
+        "gmv": 2569949.79,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "北京市",
+        "orders": 687,
+        "gmv": 1724886.97,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "安徽省",
+        "orders": 639,
+        "gmv": 1828606.04,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "province": "广东省",
+        "orders": 289,
+        "gmv": 865784.98,
+        "year": 2026,
+        "source": "simulated"
+      }
+    ]
+  },
+  "paytype": {
+    "2022": [
+      {
+        "payType": "微信支付",
+        "orders": 2871,
+        "gmv": 7665476.66,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "payType": "支付宝",
+        "orders": 2851,
+        "gmv": 7546355.49,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "payType": "货到付款",
+        "orders": 2548,
+        "gmv": 6601012.92,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "payType": "银行卡",
+        "orders": 2494,
+        "gmv": 6934575.11,
+        "year": 2022,
+        "source": "simulated"
+      }
+    ],
+    "2023": [
+      {
+        "payType": "微信支付",
+        "orders": 3337,
+        "gmv": 9117584.99,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "payType": "支付宝",
+        "orders": 3314,
+        "gmv": 9364683.96,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "payType": "货到付款",
+        "orders": 2962,
+        "gmv": 8214205.47,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "payType": "银行卡",
+        "orders": 2898,
+        "gmv": 8153306.29,
+        "year": 2023,
+        "source": "simulated"
+      }
+    ],
+    "2024": [
+      {
+        "payType": "微信支付",
+        "orders": 4001,
+        "gmv": 10641135.73,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "payType": "支付宝",
+        "orders": 3973,
+        "gmv": 10549779.28,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "payType": "货到付款",
+        "orders": 3551,
+        "gmv": 9272952.5,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "payType": "银行卡",
+        "orders": 3475,
+        "gmv": 9244781.62,
+        "year": 2024,
+        "source": "real"
+      }
+    ],
+    "2025": [
+      {
+        "payType": "微信支付",
+        "orders": 4463,
+        "gmv": 12256356.44,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "payType": "支付宝",
+        "orders": 4431,
+        "gmv": 11678591.88,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "payType": "货到付款",
+        "orders": 3961,
+        "gmv": 10774302.66,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "payType": "银行卡",
+        "orders": 3876,
+        "gmv": 10619565.79,
+        "year": 2025,
+        "source": "simulated"
+      }
+    ],
+    "2026": [
+      {
+        "payType": "微信支付",
+        "orders": 5084,
+        "gmv": 13864312.31,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "payType": "支付宝",
+        "orders": 5048,
+        "gmv": 14315734.83,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "payType": "货到付款",
+        "orders": 4512,
+        "gmv": 11728591.59,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "payType": "银行卡",
+        "orders": 4415,
+        "gmv": 11848162.86,
+        "year": 2026,
+        "source": "simulated"
+      }
+    ]
+  },
+  "store_rank": {
+    "2022": [
+      {
+        "storeId": "S009",
+        "storeName": "云购生活·莆田旗舰店",
+        "province": "福建省",
+        "orders": 199,
+        "gmv": 591337.68,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S014",
+        "storeName": "云购生活·大连二店",
+        "province": "辽宁省",
+        "orders": 193,
+        "gmv": 548618.79,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S028",
+        "storeName": "云购生活·合肥购物中心店",
+        "province": "安徽省",
+        "orders": 196,
+        "gmv": 559337.77,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S025",
+        "storeName": "云购生活·苏州旗舰店",
+        "province": "江苏省",
+        "orders": 181,
+        "gmv": 553689.18,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S031",
+        "storeName": "云购生活·嘉兴社区店",
+        "province": "浙江省",
+        "orders": 188,
+        "gmv": 553428.47,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S012",
+        "storeName": "云购生活·绍兴旗舰店",
+        "province": "浙江省",
+        "orders": 191,
+        "gmv": 543673.69,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S053",
+        "storeName": "云购生活·株洲一店",
+        "province": "湖南省",
+        "orders": 193,
+        "gmv": 527262.88,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S015",
+        "storeName": "云购生活·南通社区店",
+        "province": "江苏省",
+        "orders": 197,
+        "gmv": 553348.77,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S060",
+        "storeName": "云购生活·泸州社区店",
+        "province": "四川省",
+        "orders": 193,
+        "gmv": 525653.58,
+        "year": 2022,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S056",
+        "storeName": "云购生活·开封社区店",
+        "province": "河南省",
+        "orders": 195,
+        "gmv": 553596.55,
+        "year": 2022,
+        "source": "simulated"
+      }
+    ],
+    "2023": [
+      {
+        "storeId": "S009",
+        "storeName": "云购生活·莆田旗舰店",
+        "province": "福建省",
+        "orders": 231,
+        "gmv": 684038.47,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S014",
+        "storeName": "云购生活·大连二店",
+        "province": "辽宁省",
+        "orders": 225,
+        "gmv": 685280.18,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S028",
+        "storeName": "云购生活·合肥购物中心店",
+        "province": "安徽省",
+        "orders": 228,
+        "gmv": 674276.37,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S025",
+        "storeName": "云购生活·苏州旗舰店",
+        "province": "江苏省",
+        "orders": 211,
+        "gmv": 645317.52,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S031",
+        "storeName": "云购生活·嘉兴社区店",
+        "province": "浙江省",
+        "orders": 218,
+        "gmv": 636124.65,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S012",
+        "storeName": "云购生活·绍兴旗舰店",
+        "province": "浙江省",
+        "orders": 222,
+        "gmv": 661091.11,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S053",
+        "storeName": "云购生活·株洲一店",
+        "province": "湖南省",
+        "orders": 225,
+        "gmv": 639073.25,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S015",
+        "storeName": "云购生活·南通社区店",
+        "province": "江苏省",
+        "orders": 229,
+        "gmv": 650180.66,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S060",
+        "storeName": "云购生活·泸州社区店",
+        "province": "四川省",
+        "orders": 224,
+        "gmv": 647146.74,
+        "year": 2023,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S056",
+        "storeName": "云购生活·开封社区店",
+        "province": "河南省",
+        "orders": 227,
+        "gmv": 648058.25,
+        "year": 2023,
+        "source": "simulated"
+      }
+    ],
+    "2024": [
+      {
+        "storeId": "S009",
+        "storeName": "云购生活·莆田旗舰店",
+        "province": "福建省",
+        "orders": 278,
+        "gmv": 792786.5,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S014",
+        "storeName": "云购生活·大连二店",
+        "province": "辽宁省",
+        "orders": 270,
+        "gmv": 769656.42,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S028",
+        "storeName": "云购生活·合肥购物中心店",
+        "province": "安徽省",
+        "orders": 274,
+        "gmv": 768355.83,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S025",
+        "storeName": "云购生活·苏州旗舰店",
+        "province": "江苏省",
+        "orders": 253,
+        "gmv": 761787.72,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S031",
+        "storeName": "云购生活·嘉兴社区店",
+        "province": "浙江省",
+        "orders": 262,
+        "gmv": 751251.47,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S012",
+        "storeName": "云购生活·绍兴旗舰店",
+        "province": "浙江省",
+        "orders": 267,
+        "gmv": 749477.02,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S053",
+        "storeName": "云购生活·株洲一店",
+        "province": "湖南省",
+        "orders": 270,
+        "gmv": 741464.86,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S015",
+        "storeName": "云购生活·南通社区店",
+        "province": "江苏省",
+        "orders": 275,
+        "gmv": 741361.12,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S060",
+        "storeName": "云购生活·泸州社区店",
+        "province": "四川省",
+        "orders": 269,
+        "gmv": 733118.24,
+        "year": 2024,
+        "source": "real"
+      },
+      {
+        "storeId": "S056",
+        "storeName": "云购生活·开封社区店",
+        "province": "河南省",
+        "orders": 273,
+        "gmv": 732061.81,
+        "year": 2024,
+        "source": "real"
+      }
+    ],
+    "2025": [
+      {
+        "storeId": "S009",
+        "storeName": "云购生活·莆田旗舰店",
+        "province": "福建省",
+        "orders": 310,
+        "gmv": 887946.0,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S014",
+        "storeName": "云购生活·大连二店",
+        "province": "辽宁省",
+        "orders": 301,
+        "gmv": 870728.97,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S028",
+        "storeName": "云购生活·合肥购物中心店",
+        "province": "安徽省",
+        "orders": 305,
+        "gmv": 916853.07,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S025",
+        "storeName": "云购生活·苏州旗舰店",
+        "province": "江苏省",
+        "orders": 282,
+        "gmv": 853534.64,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S031",
+        "storeName": "云购生活·嘉兴社区店",
+        "province": "浙江省",
+        "orders": 292,
+        "gmv": 878630.51,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S012",
+        "storeName": "云购生活·绍兴旗舰店",
+        "province": "浙江省",
+        "orders": 297,
+        "gmv": 846327.62,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S053",
+        "storeName": "云购生活·株洲一店",
+        "province": "湖南省",
+        "orders": 301,
+        "gmv": 870544.72,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S015",
+        "storeName": "云购生活·南通社区店",
+        "province": "江苏省",
+        "orders": 306,
+        "gmv": 827909.01,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S060",
+        "storeName": "云购生活·泸州社区店",
+        "province": "四川省",
+        "orders": 300,
+        "gmv": 823162.93,
+        "year": 2025,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S056",
+        "storeName": "云购生活·开封社区店",
+        "province": "河南省",
+        "orders": 304,
+        "gmv": 854263.81,
+        "year": 2025,
+        "source": "simulated"
+      }
+    ],
+    "2026": [
+      {
+        "storeId": "S009",
+        "storeName": "云购生活·莆田旗舰店",
+        "province": "福建省",
+        "orders": 353,
+        "gmv": 1028420.65,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S014",
+        "storeName": "云购生活·大连二店",
+        "province": "辽宁省",
+        "orders": 343,
+        "gmv": 1006190.5,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S028",
+        "storeName": "云购生活·合肥购物中心店",
+        "province": "安徽省",
+        "orders": 348,
+        "gmv": 1021277.92,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S025",
+        "storeName": "云购生活·苏州旗舰店",
+        "province": "江苏省",
+        "orders": 321,
+        "gmv": 967077.7,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S031",
+        "storeName": "云购生活·嘉兴社区店",
+        "province": "浙江省",
+        "orders": 332,
+        "gmv": 961430.05,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S012",
+        "storeName": "云购生活·绍兴旗舰店",
+        "province": "浙江省",
+        "orders": 339,
+        "gmv": 1014677.56,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S053",
+        "storeName": "云购生活·株洲一店",
+        "province": "湖南省",
+        "orders": 343,
+        "gmv": 934797.88,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S015",
+        "storeName": "云购生活·南通社区店",
+        "province": "江苏省",
+        "orders": 349,
+        "gmv": 964091.54,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S060",
+        "storeName": "云购生活·泸州社区店",
+        "province": "四川省",
+        "orders": 341,
+        "gmv": 979108.31,
+        "year": 2026,
+        "source": "simulated"
+      },
+      {
+        "storeId": "S056",
+        "storeName": "云购生活·开封社区店",
+        "province": "河南省",
+        "orders": 346,
+        "gmv": 983894.88,
+        "year": 2026,
+        "source": "simulated"
+      }
+    ]
+  }
+}

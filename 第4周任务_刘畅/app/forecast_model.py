@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-GMV 预测模型（第3周部署操作手册 · 步骤3 规范实现）
+GMV 预测模型（第3周部署操作手册 · 步骤3 规范实现 · 多年度增强）
 
-流程严格对齐手册步骤3「Python 读取 Hive 数据并预测建模」：
-  1. 读取每日 GMV（数据源：Hive dws.dws_order_day，已导出为 daily_gmv.json 供离线运行）
-  2. 特征工程：lag1（前一日 GMV）、ma7（7 日移动平均）、is_weekend、is_promo、is_pre_promo
-  3. 训练/测试拆分：最后 TEST_DAYS 天作测试集
-  4. 多元线性回归（最小二乘，纯 Python 实现，零第三方依赖）
-  5. 评估：MAE / RMSE / MAPE + lag1/ma7 基线对比 + 分段评估
-  6. 滚动预测未来 N 天
+流程严格对齐手册步骤3：
+  1. 读取每日 GMV：2022-2026 多年度数据（2024 真实，其余模拟扩展）
+  2. 特征工程：lag1、ma7、is_weekend、is_promo、is_pre_promo
+  3. 训练/测试拆分：末 TEST_DAYS 天作测试集
+  4. 多元线性回归（最小二乘，纯 Python，零第三方依赖）
+  5. 评估：MAE / RMSE / MAPE + lag1/ma7 基线 + 分段评估
+  6. 滚动预测未来 N 天（N 由界面输入）
 
-口径说明：数据源为 DWS「有效订单」口径（GMV 合计约 2642 万 / 9992 单），
-与 ADS 全量口径（3970 万 / 15000 单）分开，预测仅用于趋势参考。
+年份语义：
+  - year=None：用全部历史（2022-2026）训练，预测序列末尾之后 N 天；
+  - year=2024：仅用该年历史训练，预测该年末之后 N 天（历史截取到该年 12-31）；
+  - 数据标注 data_source 显式说明真实/模拟来源。
 """
 import json
 import math
@@ -19,22 +21,29 @@ import os
 from datetime import date, timedelta
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "echarts", "data")
-TEST_DAYS = 14          # 测试集天数（手册：留出末段做真实值对比）
-FUTURE_DAYS = 7         # 未来预测天数
+TEST_DAYS = 14
+FUTURE_DAYS = 7
+ALL_YEARS = [2022, 2023, 2024, 2025, 2026]
+REAL_YEAR = 2024
 
 
-def _load_daily():
-    with open(os.path.join(DATA, "daily_gmv.json"), encoding="utf-8") as f:
-        return json.load(f)
+def _load_daily(year=None):
+    path = os.path.join(DATA, "daily_gmv_multi.json")
+    if not os.path.exists(path):
+        path = os.path.join(DATA, "daily_gmv.json")
+    with open(path, encoding="utf-8") as f:
+        rows = json.load(f)
+    if year in ALL_YEARS:
+        rows = [r for r in rows if int(str(r["date"])[:4]) <= year]
+    return rows
 
 
 def _is_promo(d):
-    """会员日模拟：每月 8/18/28 号（与第3周预测口径一致）"""
+    """会员日模拟：每月 8/18/28 号"""
     return d.day in (8, 18, 28)
 
 
 def _features(series, i):
-    """构造第 i 天的特征向量；series 为 [{date,gmv,orders}, ...]"""
     d = date.fromisoformat(series[i]["date"])
     lag1 = series[i - 1]["gmv"] if i >= 1 else series[i]["gmv"]
     win = series[max(0, i - 6):i + 1]
@@ -47,7 +56,7 @@ def _features(series, i):
 
 
 def _solve(A, b):
-    """高斯-约当消元求解正规方程 (X'X)w = X'y，带岭正则防奇异"""
+    """高斯-约当消元求解正规方程，带岭正则防奇异"""
     n = len(A)
     lam = 1e-6
     M = [row[:] + [b[i]] for i, row in enumerate(A)]
@@ -70,7 +79,6 @@ def _solve(A, b):
 
 
 def _fit(X, y):
-    """最小二乘多元线性回归，返回权重 w（含截距项，X 首列已置 1）"""
     k = len(X[0])
     XtX = [[sum(row[a] * row[b] for row in X) for b in range(k)] for a in range(k)]
     Xty = [sum(row[a] * yy for row, yy in zip(X, y)) for a in range(k)]
@@ -93,17 +101,17 @@ def _metrics(actual, pred):
             "MAPE(%)": round(mape, 2), "样本数": n}
 
 
-def build_forecast(future_days=FUTURE_DAYS):
+def build_forecast(future_days=FUTURE_DAYS, year=None):
     """按手册步骤3完整跑一遍，返回结构化结果 dict。
 
-    future_days: 需要自动输出的未来预测天数（由界面输入，默认 7，上限 365）。
+    future_days: 自动输出的未来预测天数（1~365）。
+    year: 预测基准年份（None=全部历史）。
     """
     future_days = max(1, min(int(future_days), 365))
-    series = _load_daily()
+    series = _load_daily(year)
     n = len(series)
-    split = n - TEST_DAYS
+    split = max(n - TEST_DAYS, 1)
 
-    # ---- 特征矩阵（首列=1 作为截距）----
     X_all, y_all = [], []
     for i in range(n):
         f = _features(series, i)
@@ -114,29 +122,21 @@ def build_forecast(future_days=FUTURE_DAYS):
     X_test, y_test = X_all[split:], y_all[split:]
     w = _fit(X_train, y_train)
 
-    # ---- 测试集：模型预测 vs 真实 ----
     pred_test = [_predict(w, x) for x in X_test]
     model_metrics = _metrics(y_test, pred_test)
+    baseline_lag1 = _metrics(y_test, [x[1] for x in X_test])
+    baseline_ma7 = _metrics(y_test, [x[2] for x in X_test])
 
-    # ---- 基线对比（lag1 / ma7）----
-    lag1_pred = [x[1] for x in X_test]
-    ma7_pred = [x[2] for x in X_test]
-    baseline_lag1 = _metrics(y_test, lag1_pred)
-    baseline_ma7 = _metrics(y_test, ma7_pred)
-
-    # ---- 预测 vs 真实明细 ----
     actual_rows = []
     for i, idx in enumerate(range(split, n)):
-        d = series[idx]["date"]
         actual_rows.append({
-            "date": d,
+            "date": series[idx]["date"],
             "actual": round(y_test[i], 2),
             "pred": round(pred_test[i], 2),
             "is_weekend": X_test[i][3],
             "is_promo": X_test[i][4],
         })
 
-    # ---- 分段评估：普通日 / 周末 / 会员日 / 剔除大促 ----
     def seg_metrics(names):
         act, pre = [], []
         for r in actual_rows:
@@ -153,32 +153,35 @@ def build_forecast(future_days=FUTURE_DAYS):
     }
 
     # ---- 滚动预测未来 N 天 ----
-    # 用最后已知窗口递推：每日预测值回填进序列，再构造次日特征
     work = [dict(r) for r in series]
     future_rows = []
     last_date = date.fromisoformat(series[-1]["date"])
     for step in range(1, future_days + 1):
         idx = len(work)
-        f = _features(work, idx - 1)  # 基于已有序列末位构造特征
-        # _features(work, idx-1) 用的是 work[idx-1] 的 lag1/ma7，正是最新可得
+        f = _features(work, idx - 1)
         pred = _predict(w, [1.0] + f)
         d = last_date + timedelta(days=step)
         pred = max(0.0, pred)
         work.append({"date": d.isoformat(), "gmv": pred, "orders": 0})
         future_rows.append({
             "date": d.isoformat(),
+            "year": d.year,
             "pred": round(pred, 2),
             "is_weekend": 1 if d.weekday() >= 5 else 0,
             "is_promo": 1 if _is_promo(d) else 0,
         })
 
     coef_names = ["截距", "lag1", "ma7", "is_weekend", "is_promo", "is_pre_promo"]
+    source_note = (f"{year} 年历史（{'真实' if year == REAL_YEAR else '模拟扩展'}）"
+                   if year in ALL_YEARS else "2022-2026 全部历史（2024 真实，其余模拟扩展）")
     return {
-        "data_source": "Hive dws.dws_order_day（366天，有效订单口径，离线快照）",
+        "data_source": f"{source_note} · 每日 GMV 离线快照",
+        "year": year,
+        "year_label": str(year) if year in ALL_YEARS else "全部年份",
         "train_days": split,
-        "test_days": TEST_DAYS,
-        "future_days": future_days,
+        "test_days": n - split,
         "test_range": [actual_rows[0]["date"], actual_rows[-1]["date"]],
+        "future_days": future_days,
         "features": ["lag1", "ma7", "is_weekend", "is_promo", "is_pre_promo"],
         "model": model_metrics,
         "baseline_lag1": baseline_lag1,
@@ -199,8 +202,7 @@ if __name__ == "__main__":
     print("模型指标:", res["model"])
     print("基线lag1:", res["baseline_lag1"])
     print("基线ma7 :", res["baseline_ma7"])
-    print("分段:", json.dumps(res["segments"], ensure_ascii=False))
     print(f"未来{res['future_days']}天:")
-    for r in res["future_rows"]:
+    for r in res["future_rows"][:10]:
         print("  ", r["date"], r["pred"])
     print("回归系数:", json.dumps(res["coef"], ensure_ascii=False))
