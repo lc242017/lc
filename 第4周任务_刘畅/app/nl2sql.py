@@ -31,8 +31,19 @@ def _hive(sql):
     return cells[0] if cells else [], cells[1:] if len(cells) > 1 else []
 
 
+# ---- 预测：只返回历史实际数据，未来预测值由界面手动输入 ----
+def _build_forecast_history():
+    trend = _load("trend")
+    cols = ["month", "gmv", "series"]
+    rows = [[r["month"], f"{float(r['gmv']):.2f}", "实际"] for r in trend]
+    return cols, rows
+
+
 # ---- 意图识别规则：关键词 -> 数据集 + SQL 模板 ----
 RULES = [
+    (r"(预测|预估|预计|forecast).*(gmv|销售|订单|额)|预测|预估|预计",
+     "forecast", "SELECT order_date,gmv FROM dws.dws_order_day ORDER BY order_date",
+     "forecast", "GMV 趋势预测建模（手册步骤3 · lag1/ma7+线性回归）"),
     (r"(gmv|成交|销售总额|总额|营业额).*(多少|总共|总体|多少)|总体|整体|总览|核心指标|kpi",
      "kpi", "SELECT gmv,orders,aov,user_cnt,store_cnt,refund_rate FROM ads.ads_kpi",
      "kpi", "核心经营指标"),
@@ -73,6 +84,9 @@ def parse(question):
     # 规则匹配
     for pattern, ds, sql, chart, title in RULES:
         if re.search(pattern, q, re.I):
+            if ds == "forecast":
+                cols, rows = _build_forecast_history()
+                return sql, None, "forecast", title, (cols, rows)
             return sql, ds, chart, title, None
     # 兜底：核心指标
     sql = "SELECT gmv,orders,aov,user_cnt,store_cnt,refund_rate FROM ads.ads_kpi"
@@ -80,11 +94,19 @@ def parse(question):
 
 
 def answer(question):
-    """返回 dict: {question, sql, chart, title, columns, rows}"""
+    """返回 dict: {question, sql, chart, title, columns, rows, model?}
+    chart=='forecast' 时额外携带 model：第3周手册步骤3的完整预测建模结果。"""
     sql, ds, chart, title, preloaded = parse(question)
+    model = None
     if preloaded is not None:
         cols, rows = preloaded
         rows = [[str(x) for x in r] for r in rows]
+    if chart == "forecast":
+        try:
+            from forecast_model import build_forecast
+            model = build_forecast()
+        except Exception as ex:
+            model = {"error": str(ex)}
     elif USE_HIVE:
         cols, rows = _hive(sql)
     else:
@@ -112,7 +134,7 @@ def answer(question):
         else:
             cols, rows = [], []
     return {"question": question, "sql": sql, "chart": chart,
-            "title": title, "columns": cols, "rows": rows}
+            "title": title, "columns": cols, "rows": rows, "model": model}
 
 
 if __name__ == "__main__":
